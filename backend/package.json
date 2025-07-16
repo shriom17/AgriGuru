@@ -1,0 +1,37 @@
+{
+  "name": "agriguru-ai-backend",
+  "version": "1.0.0",
+  "description": "AgriGuru Farming Expert AI Backend Server",
+  "main": "farming_expert_app.py",
+  "scripts": {
+    "start": "python farming_expert_app.py",
+    "dev": "python farming_expert_app.py",
+    "test": "python check_server.py",
+    "install": "pip install -r requirements.txt",
+    "check": "python check_server.py"
+  },
+  "dependencies": {
+    "flask": "2.3.3",
+    "flask-cors": "4.0.0",
+    "torch": "2.0.1",
+    "pillow": "10.0.0",
+    "requests": "2.31.0"
+  },
+  "author": "AgriGuru Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agriguru/agriguru-ai"
+  },
+  "keywords": [
+    "agriculture",
+    "farming",
+    "ai",
+    "expert-system",
+    "flask",
+    "python"
+  ],
+  "engines": {
+    "python": ">=3.7"
+  }
+}

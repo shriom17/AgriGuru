@@ -1,0 +1,6 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+torch==2.0.1
+Pillow==10.0.0
+requests==2.31.0
+geocoder==1.38.1

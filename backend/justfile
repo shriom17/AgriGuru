@@ -1,0 +1,53 @@
+# AgriGuru AI Backend - Modern Task Runner
+# Install 'just' command runner: https://github.com/casey/just
+
+# Default recipe
+default:
+    @just --list
+
+# Install dependencies
+install:
+    @echo "📦 Installing dependencies..."
+    pip install -r requirements.txt
+    @echo "✅ Dependencies installed!"
+
+# Start the server
+start:
+    @echo "🚀 Starting AgriGuru AI Backend Server..."
+    python farming_expert_app.py
+
+# Start in development mode
+dev:
+    @echo "🛠️  Starting in development mode..."
+    python farming_expert_app.py
+
+# Check server status
+check:
+    @echo "🔍 Checking server status..."
+    python check_server.py
+
+# Run tests
+test:
+    @echo "🧪 Running tests..."
+    python check_server.py
+
+# Clean up cache files
+clean:
+    @echo "🧹 Cleaning up..."
+    find . -name "*.pyc" -delete
+    find . -name "__pycache__" -type d -exec rm -rf {} +
+    @echo "✅ Cleanup complete!"
+
+# Show server info
+info:
+    @echo "🌾 AgriGuru AI Backend Server"
+    @echo "=============================="
+    @echo "📁 Location: $(pwd)"
+    @echo "🐍 Python: $(python --version)"
+    @echo "🌐 URL: http://localhost:5000"
+    @echo "🧪 Test: test_ai.html"
+
+# Quick setup (install + start)
+setup:
+    @just install
+    @just start
