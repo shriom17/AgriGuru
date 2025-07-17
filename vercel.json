@@ -11,8 +11,16 @@
   ],
   "routes": [
     {
+      "src": "^/static/(.*)",
+      "dest": "/frontend/build/static/$1"
+    },
+    {
+      "src": "^/(.*)\\.(js|css|png|jpg|jpeg|gif|ico|svg)$",
+      "dest": "/frontend/build/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/build/index.html"
     }
   ]
 }
