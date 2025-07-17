@@ -1,6 +1,46 @@
 {
+  "name": "agriguru",
+  "version": "1.0.0",
+  "description": "AgriGuru - Smart Agricultural Management System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd backend && python simple_app.py\" \"cd frontend && npm start\"",
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test",
+    "backend": "cd backend && python simple_app.py",
+    "frontend": "cd frontend && npm start",
+    "install-all": "npm install && cd frontend && npm install",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "keywords": [
+    "agriculture",
+    "farming",
+    "react",
+    "flask",
+    "ai",
+    "chatbot"
+  ],
+  "author": "Shriom",
+  "license": "MIT",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "react-router-dom": "^7.6.3",
     "react-scripts": "^5.0.1"
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shriom17/AgriGuru.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shriom17/AgriGuru/issues"
+  },
+  "homepage": "https://github.com/shriom17/AgriGuru#readme"
 }
