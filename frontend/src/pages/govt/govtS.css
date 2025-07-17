@@ -1,0 +1,241 @@
+.government-schemes {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #acb8c9 0%, #e4efe9 100%);
+}
+
+.schemes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.schemes-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-top: 60px;
+}
+
+.schemes-header h1 {
+  font-size: 2.5rem;
+  color: #3e8d42;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.schemes-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.scheme-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.scheme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.scheme-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.scheme-card h2 {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.scheme-description {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.scheme-details {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.scheme-details h3 {
+  color: #2e7d32;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.scheme-details ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scheme-details li {
+  color: #666;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.scheme-details li::before {
+  content: "•";
+  color: #4caf50;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.learn-more-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.learn-more-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.learn-more-btn:active {
+  transform: translateY(0);
+}
+
+.learn-more-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.4s ease-out;
+}
+
+.learn-more-btn:active::after {
+  transform: translate(-50%, -50%) scale(2);
+  opacity: 0;
+}
+
+.contact-section {
+  text-align: center;
+  margin-top: 50px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.contact-section p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.helpline-btn {
+  display: inline-block;
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.helpline-btn:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .schemes-header h1 {
+    font-size: 2rem;
+  }
+  
+  .schemes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scheme-card {
+    padding: 20px;
+  }
+  
+  .contact-section {
+    padding: 30px 20px;
+  }
+}
+
+/* Animation for cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scheme-card {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.scheme-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scheme-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.scheme-card:nth-child(4) {
+  animation-delay: 0.6s;
+}

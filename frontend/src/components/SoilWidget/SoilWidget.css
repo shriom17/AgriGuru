@@ -1,0 +1,348 @@
+.soil-widget {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.3);
+  min-height: 400px;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.soil-widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.widget-header h3 {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.refresh-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(360deg);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.retry-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.warning {
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.warning small {
+  font-size: 0.85em;
+}
+
+.soil-overview {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.soil-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.status-indicator {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.status-text {
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.soil-type {
+  flex: 1;
+}
+
+.soil-type strong {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+}
+
+.soil-type small {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+}
+
+.location-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.location-info small {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85em;
+}
+
+.soil-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.metric {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.metric-status {
+  display: block;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metric-unit {
+  display: block;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.soil-composition {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.soil-composition h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.composition-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.composition-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.composition-item span {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-fill.sand {
+  background: linear-gradient(90deg, #F4A460, #DEB887);
+}
+
+.progress-fill.clay {
+  background: linear-gradient(90deg, #A0522D, #8B4513);
+}
+
+.progress-fill.silt {
+  background: linear-gradient(90deg, #D2B48C, #BC9A6A);
+}
+
+.recommendations {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.recommendations h4 {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.recommendations ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recommendations li {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.last-updated {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.last-updated small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .soil-widget {
+    padding: 15px;
+    min-height: 350px;
+  }
+  
+  .soil-metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .soil-status {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .location-info {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  
+  .widget-header h3 {
+    font-size: 1.1em;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .soil-widget {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}

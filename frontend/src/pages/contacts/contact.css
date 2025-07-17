@@ -1,0 +1,119 @@
+.contact-page {
+  padding: 9rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.contact-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #2d5016;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* Grid Layout */
+.ado-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Card Styling */
+.ado-card {
+  background-color: #f9f9f9;
+  border: 2px solid #2d5016;
+  border-radius: 10px;
+  padding: 1.2rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.ado-card:hover {
+  box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+}
+
+/* Header */
+.ado-header {
+  margin-bottom: 1rem;
+}
+
+.ado-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2d5016;
+}
+
+.designation {
+  display: block;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.2rem;
+}
+
+/* Details */
+.ado-details p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+/* Contact Buttons */
+.contact-info {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.contact-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.phone {
+  background-color: #2d5016;
+  color: white;
+  border: 2px solid #2d5016;
+}
+
+.phone:hover {
+  background-color: white;
+  color: #2d5016;
+}
+
+.email {
+  background-color: #2d5016;
+  color: white;
+  border: 2px solid #2d5016;
+}
+
+.email:hover {
+  background-color: white;
+  color: #2d5016;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 480px) {
+  .contact-page h1 {
+    font-size: 1.6rem;
+  }
+
+  .ado-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .contact-button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
