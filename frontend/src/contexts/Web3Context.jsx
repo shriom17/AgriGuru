@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+﻿import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { toast } from 'react-toastify';
 
@@ -425,7 +425,7 @@ export const Web3Provider = ({ children }) => {
   // Auto-connect if previously connected
   useEffect(() => {
     const autoConnect = async () => {
-      if (window.ethereum && localStorage.getItem('agriguru_wallet_connected') === 'true') {
+      if (window.ethereum && localStorage.getItem('KisanMitra_wallet_connected') === 'true') {
         try {
           const accounts = await window.ethereum.request({ method: 'eth_accounts' });
           if (accounts.length > 0) {
@@ -443,9 +443,9 @@ export const Web3Provider = ({ children }) => {
   // Save connection state
   useEffect(() => {
     if (state.isConnected) {
-      localStorage.setItem('agriguru_wallet_connected', 'true');
+      localStorage.setItem('KisanMitra_wallet_connected', 'true');
     } else {
-      localStorage.removeItem('agriguru_wallet_connected');
+      localStorage.removeItem('KisanMitra_wallet_connected');
     }
   }, [state.isConnected]);
 

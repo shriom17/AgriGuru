@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import './WhatsAppSetup.css';
 
 const WhatsAppSetup = () => {
@@ -69,7 +69,7 @@ const WhatsAppSetup = () => {
             const data = await response.json();
             
             if (data.success) {
-                setSuccess('WhatsApp verified successfully! You will now receive AgriGuru alerts.');
+                setSuccess('WhatsApp verified successfully! You will now receive KisanMitra alerts.');
                 setCurrentStep(4);
             } else {
                 setError(data.error || 'Invalid verification code');
@@ -85,7 +85,7 @@ const WhatsAppSetup = () => {
         <div className="whatsapp-setup">
             <div className="setup-header">
                 <h2>🌱 Setup WhatsApp Alerts</h2>
-                <p>Get AgriGuru farming alerts directly on WhatsApp</p>
+                <p>Get KisanMitra farming alerts directly on WhatsApp</p>
             </div>
 
             <div className="setup-steps">
@@ -102,7 +102,7 @@ const WhatsAppSetup = () => {
                         <h3>📱 Step 1: Join WhatsApp Sandbox</h3>
                         <div className="sandbox-instructions">
                             <div className="instruction-box">
-                                <h4>🔗 Join AgriGuru WhatsApp</h4>
+                                <h4>🔗 Join KisanMitra WhatsApp</h4>
                                 <ol>
                                     <li>Open WhatsApp on your phone</li>
                                     <li>Start a new chat with: <strong>+14155238886</strong></li>
@@ -165,7 +165,7 @@ const WhatsAppSetup = () => {
                 {currentStep === 3 && (
                     <div className="setup-step">
                         <h3>🔐 Step 3: Enter Verification Code</h3>
-                        <p>Check your WhatsApp for a 6-digit code from AgriGuru Bot</p>
+                        <p>Check your WhatsApp for a 6-digit code from KisanMitra Bot</p>
                         
                         <div className="code-input">
                             <input
@@ -201,7 +201,7 @@ const WhatsAppSetup = () => {
                     <div className="setup-step success">
                         <h3>🎉 WhatsApp Alerts Activated!</h3>
                         <div className="success-message">
-                            <p>✅ Your WhatsApp is now verified for AgriGuru alerts</p>
+                            <p>✅ Your WhatsApp is now verified for KisanMitra alerts</p>
                             <p>📱 You will receive:</p>
                             <ul>
                                 <li>🌦️ Weather updates</li>

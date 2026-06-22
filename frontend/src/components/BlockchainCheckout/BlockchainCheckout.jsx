@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useMarketplace } from '../../contexts/MarketplaceContext';
 import { useWeb3 } from '../../contexts/Web3Context';
 import { ethers } from 'ethers';
@@ -163,7 +163,7 @@ const BlockchainCheckout = ({ onClose, onSuccess }) => {
         key: process.env.REACT_APP_RAZORPAY_KEY,
         amount: cartTotal * 100, // Amount in paise
         currency: 'INR',
-        name: 'AgriGuru',
+        name: 'KisanMitra',
         description: 'Agricultural Equipment Purchase',
         order_id: 'order_' + Date.now(),
         handler: function(response) {

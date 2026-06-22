@@ -1,7 +1,7 @@
-# User-to-User Chat Feature
+﻿# User-to-User Chat Feature
 
 ## Overview
-Real-time messaging system that enables direct communication between users (farmers and customers) on the AgriGuru platform using Socket.IO.
+Real-time messaging system that enables direct communication between users (farmers and customers) on the KisanMitra platform using Socket.IO.
 
 ## Features
 
@@ -198,7 +198,7 @@ REACT_APP_API_URL=http://localhost:5001
 
 **Backend (.env):**
 ```
-MONGO_URI=mongodb://localhost:27017/agrigurudb
+MONGO_URI=mongodb://localhost:27017/KisanMitradb
 PORT=5001
 ```
 
@@ -387,7 +387,7 @@ Tested and working on:
 
 ## License
 
-Part of the AgriGuru platform - Same license as main project.
+Part of the KisanMitra platform - Same license as main project.
 
 ## Support
 

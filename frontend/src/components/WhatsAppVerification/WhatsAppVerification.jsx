@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import './WhatsAppVerification.css';
 
 const WhatsAppVerification = ({ onVerificationSuccess, onCancel }) => {
@@ -163,7 +163,7 @@ const WhatsAppVerification = ({ onVerificationSuccess, onCancel }) => {
     <div className="whatsapp-verification">
       <div className="verification-header">
         <h3>🌱 WhatsApp Verification</h3>
-        <p>Verify your WhatsApp number to receive AgriGuru alerts</p>
+        <p>Verify your WhatsApp number to receive KisanMitra alerts</p>
       </div>
 
       {step === 1 && (

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Simple API server to serve processed Kaggle agricultural data
 Provides endpoints for the React frontend to access real crop data
@@ -138,21 +138,21 @@ def get_sample_data():
     })
 
 if __name__ == '__main__':
-    print("🌾 AgriGuru Kaggle Data API Server")
+    print("ðŸŒ¾ KisanMitra Kaggle Data API Server")
     print("=" * 40)
     
     if kaggle_data:
         dataset_info = kaggle_data.get('dataset_info', {})
-        print(f"✅ Kaggle dataset loaded:")
-        print(f"   📊 Total records: {dataset_info.get('total_records', 'N/A')}")
-        print(f"   🌾 Crops available: {len(dataset_info.get('crops', []))}")
-        print(f"   📅 Date range: {dataset_info.get('date_range', 'N/A')}")
+        print(f"âœ… Kaggle dataset loaded:")
+        print(f"   ðŸ“Š Total records: {dataset_info.get('total_records', 'N/A')}")
+        print(f"   ðŸŒ¾ Crops available: {len(dataset_info.get('crops', []))}")
+        print(f"   ðŸ“… Date range: {dataset_info.get('date_range', 'N/A')}")
     else:
-        print("⚠️  Kaggle data not loaded - using fallback data")
+        print("âš ï¸  Kaggle data not loaded - using fallback data")
     
-    print("\n🚀 Starting API server...")
-    print("   📍 URL: http://localhost:5001")
-    print("   🔍 Health check: http://localhost:5001/api/health")
-    print("   📊 Dataset info: http://localhost:5001/api/kaggle/dataset-info")
+    print("\nðŸš€ Starting API server...")
+    print("   ðŸ“ URL: http://localhost:5001")
+    print("   ðŸ” Health check: http://localhost:5001/api/health")
+    print("   ðŸ“Š Dataset info: http://localhost:5001/api/kaggle/dataset-info")
     
     app.run(debug=True, port=5001, host='0.0.0.0')

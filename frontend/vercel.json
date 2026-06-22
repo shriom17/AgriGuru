@@ -1,5 +1,5 @@
-{
-  "name": "agriguru-frontend",
+﻿{
+  "name": "KisanMitra-frontend",
   "version": 2,
   "buildCommand": "CI=false DISABLE_ESLINT_PLUGIN=true npm run build",
   "env": {

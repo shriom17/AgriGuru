@@ -1,4 +1,4 @@
-
+﻿
 
 
 
@@ -8,7 +8,7 @@ import './chat.css';
 import { useNavigate } from 'react-router-dom';
 
 const SOCKET_URL = 'http://127.0.0.1:5001';
-const ROOM = 'agriguru-group';
+const ROOM = 'KisanMitra-group';
 
 
 

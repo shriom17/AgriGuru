@@ -1,4 +1,4 @@
-
+﻿
 from flask import Flask, request, jsonify, session, send_from_directory
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -45,8 +45,8 @@ def send_whatsapp_alert(phone_number, message):
         if not phone_number.startswith('+'):
             phone_number = '+' + phone_number
         
-        # Add AgriGuru branding
-        branded_message = f"🌾 *AgriGuru Farming Assistant* 🌾\n\n{message}"
+        # Add KisanMitra branding
+        branded_message = f"ðŸŒ¾ *KisanMitra Farming Assistant* ðŸŒ¾\n\n{message}"
         
         twilio_message = client.messages.create(
             body=branded_message,
@@ -65,19 +65,19 @@ def send_whatsapp_alert(phone_number, message):
 
 # --- Mock functions for other WhatsApp services ---
 def send_weather_alert(phone_number, location, condition, temperature):
-    message = f"🌤️ Weather Alert for {location}: {condition}, {temperature}°C"
+    message = f"ðŸŒ¤ï¸ Weather Alert for {location}: {condition}, {temperature}Â°C"
     return send_whatsapp_alert(phone_number, message)
 
 def send_market_price_alert(phone_number, crop, price, market):
-    message = f"💰 Market Alert - {crop}: ₹{price}/quintal at {market}"
+    message = f"ðŸ’° Market Alert - {crop}: â‚¹{price}/quintal at {market}"
     return send_whatsapp_alert(phone_number, message)
 
 def send_crop_disease_alert(phone_number, crop, disease, action):
-    message = f"🦠 Crop Alert - {crop}: {disease}. Action: {action}"
+    message = f"ðŸ¦  Crop Alert - {crop}: {disease}. Action: {action}"
     return send_whatsapp_alert(phone_number, message)
 
 def send_test_message(phone_number):
-    message = "🌾 AgriGuru Test Message - WhatsApp alerts are working!"
+    message = "ðŸŒ¾ KisanMitra Test Message - WhatsApp alerts are working!"
     return send_whatsapp_alert(phone_number, message)
 
 # --- Mock agricultural data services ---
@@ -121,13 +121,13 @@ socketio = SocketIO(
 # Configuration
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
-app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost:27017/agrigurudb')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost:27017/KisanMitradb')
 
 # Connect to MongoDB with optional connection (won't crash if MongoDB is unavailable)
 try:
     # MongoDB URI handles all connection parameters
     # Atlas: mongodb+srv://user:pass@cluster.mongodb.net/db?retryWrites=true&w=majority
-    # Local: mongodb://localhost:27017/agrigurudb
+    # Local: mongodb://localhost:27017/KisanMitradb
     mongo_uri = app.config['MONGO_URI']
     
     client = MongoClient(
@@ -137,14 +137,14 @@ try:
     
     # Test the connection
     client.server_info()
-    db = client.agrigurudb
+    db = client.KisanMitradb
     chat_messages_collection = db.chat_messages
     users_collection = db.users
     otp_collection = db.otp_codes
-    print("✅ MongoDB connected successfully")
+    print("âœ… MongoDB connected successfully")
 except Exception as e:
-    print(f"⚠️ MongoDB connection failed: {e}")
-    print("📝 Running without database - some features will be limited")
+    print(f"âš ï¸ MongoDB connection failed: {e}")
+    print("ðŸ“ Running without database - some features will be limited")
     db = None
     chat_messages_collection = None
     users_collection = None
@@ -154,8 +154,8 @@ except Exception as e:
 EMAIL_CONFIG = {
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
-    'email': 'YOUR_GMAIL_HERE@gmail.com',           # ⚠️ REPLACE: Your actual Gmail address
-    'password': 'YOUR_16_CHAR_APP_PASSWORD_HERE'    # ⚠️ REPLACE: Your Gmail App Password (16 chars, no spaces)
+    'email': 'YOUR_GMAIL_HERE@gmail.com',           # âš ï¸ REPLACE: Your actual Gmail address
+    'password': 'YOUR_16_CHAR_APP_PASSWORD_HERE'    # âš ï¸ REPLACE: Your Gmail App Password (16 chars, no spaces)
 }
 
 # Helper function to check database availability
@@ -181,18 +181,18 @@ def generate_otp():
 def send_email_otp(email, otp):
     """Send OTP via email"""
     try:
-        # 🧪 DEVELOPMENT MODE: Mock email sending
+        # ðŸ§ª DEVELOPMENT MODE: Mock email sending
         if EMAIL_CONFIG['email'] == 'YOUR_GMAIL_HERE@gmail.com':
-            print(f"📧 MOCK EMAIL SENT to {email}")
-            print(f"🔢 OTP CODE: {otp}")
-            print(f"⏰ Expires in 10 minutes")
-            print("🔧 To enable real emails, update EMAIL_CONFIG in main.py")
+            print(f"ðŸ“§ MOCK EMAIL SENT to {email}")
+            print(f"ðŸ”¢ OTP CODE: {otp}")
+            print(f"â° Expires in 10 minutes")
+            print("ðŸ”§ To enable real emails, update EMAIL_CONFIG in main.py")
             return True
         
         # Check if email config is set up
         if EMAIL_CONFIG['email'].startswith('YOUR_') or EMAIL_CONFIG['password'].startswith('YOUR_'):
-            print("❌ EMAIL ERROR: Please update EMAIL_CONFIG with your actual Gmail credentials!")
-            print("🔧 Steps to fix:")
+            print("âŒ EMAIL ERROR: Please update EMAIL_CONFIG with your actual Gmail credentials!")
+            print("ðŸ”§ Steps to fix:")
             print("1. Enable 2FA on your Gmail account")
             print("2. Generate App Password at: https://myaccount.google.com/security")
             print("3. Update EMAIL_CONFIG in main.py with your actual credentials")
@@ -201,13 +201,13 @@ def send_email_otp(email, otp):
         msg = MIMEMultipart()
         msg['From'] = EMAIL_CONFIG['email']
         msg['To'] = email
-        msg['Subject'] = "AgriGuru - Your Verification Code"
+        msg['Subject'] = "KisanMitra - Your Verification Code"
         
         body = f"""
         <html>
         <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); padding: 20px; text-align: center;">
-                <h1 style="color: white; margin: 0;">🌱 AgriGuru</h1>
+                <h1 style="color: white; margin: 0;">ðŸŒ± KisanMitra</h1>
             </div>
             <div style="padding: 30px; background: #f9f9f9;">
                 <h2 style="color: #333;">Verify Your Account</h2>
@@ -219,7 +219,7 @@ def send_email_otp(email, otp):
                 <p style="color: #666;">If you didn't request this code, please ignore this email.</p>
             </div>
             <div style="background: #333; padding: 15px; text-align: center;">
-                <p style="color: #ccc; margin: 0; font-size: 14px;">© 2025 AgriGuru - Your Farming Assistant</p>
+                <p style="color: #ccc; margin: 0; font-size: 14px;">Â© 2025 KisanMitra - Your Farming Assistant</p>
             </div>
         </body>
         </html>
@@ -227,7 +227,7 @@ def send_email_otp(email, otp):
         
         msg.attach(MIMEText(body, 'html'))
         
-        print(f"📧 Attempting to send OTP to {email} from {EMAIL_CONFIG['email']}")
+        print(f"ðŸ“§ Attempting to send OTP to {email} from {EMAIL_CONFIG['email']}")
         
         server = smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port'])
         server.starttls()
@@ -236,17 +236,17 @@ def send_email_otp(email, otp):
         server.sendmail(EMAIL_CONFIG['email'], email, text)
         server.quit()
         
-        print(f"✅ OTP email sent successfully to {email}")
+        print(f"âœ… OTP email sent successfully to {email}")
         return True
     except smtplib.SMTPAuthenticationError as e:
-        print(f"❌ SMTP Authentication Error: {e}")
-        print("🔧 Fix: Check your Gmail App Password is correct")
+        print(f"âŒ SMTP Authentication Error: {e}")
+        print("ðŸ”§ Fix: Check your Gmail App Password is correct")
         return False
     except smtplib.SMTPException as e:
-        print(f"❌ SMTP Error: {e}")
+        print(f"âŒ SMTP Error: {e}")
         return False
     except Exception as e:
-        print(f"❌ Email OTP send error: {e}")
+        print(f"âŒ Email OTP send error: {e}")
         return False
 
 def store_otp(email, otp, purpose='login'):
@@ -306,7 +306,7 @@ def is_strong_password(password):
 
 @app.route('/')
 def hello_world():
-    return jsonify({"message": "AgriGuru Backend API", "status": "running"})
+    return jsonify({"message": "KisanMitra Backend API", "status": "running"})
 
 
 @app.route('/api/signup', methods=['POST'])
@@ -1219,7 +1219,7 @@ def verify_whatsapp():
         )
         
         # Send verification code via WhatsApp
-        message = f"Your AgriGuru verification code is: {verification_code}. Valid for 15 minutes."
+        message = f"Your KisanMitra verification code is: {verification_code}. Valid for 15 minutes."
         result = send_whatsapp_alert(phone_number, message)
         
         if 'error' in result:
@@ -1334,7 +1334,7 @@ def send_whatsapp_alert_api():
             # Generic alert
             result = send_whatsapp_alert(
                 phone_number,
-                alert_data.get('message', 'Alert from AgriGuru')
+                alert_data.get('message', 'Alert from KisanMitra')
             )
         
         if 'error' in result:
@@ -1413,7 +1413,7 @@ def send_bulk_whatsapp_alert():
                 # Generic alert
                 result = send_whatsapp_alert(
                     phone_number,
-                    alert_data.get('message', 'Alert from AgriGuru')
+                    alert_data.get('message', 'Alert from KisanMitra')
                 )
             
             results.append({
@@ -1611,14 +1611,14 @@ if __name__ == '__main__':
             users_collection.create_index("email", unique=True)
             users_collection.create_index("created_at")
             users_collection.create_index("is_active")
-            print("✅ Database indexes created successfully!")
+            print("âœ… Database indexes created successfully!")
         except Exception as e:
-            print(f"ℹ️ Indexes may already exist: {e}")
+            print(f"â„¹ï¸ Indexes may already exist: {e}")
     else:
-        print("⚠️ Skipping database index creation (MongoDB not available)")
+        print("âš ï¸ Skipping database index creation (MongoDB not available)")
 
-    print("🚀 Starting AgriGuru Authentication & Chat API on port 5001...")
-    print("📊 Available endpoints:")
+    print("ðŸš€ Starting KisanMitra Authentication & Chat API on port 5001...")
+    print("ðŸ“Š Available endpoints:")
     print("   POST /api/signup - Register new user")
     print("   POST /api/login - User login")
     print("   POST /api/logout - User logout")
@@ -1627,14 +1627,14 @@ if __name__ == '__main__':
     print("   POST /api/change-password - Change password")
     print("   GET /api/check-auth - Check authentication status")
     print("   GET /api/test-db - Test database connection and view users")
-    print("🔐 OTP Authentication endpoints:")
+    print("ðŸ” OTP Authentication endpoints:")
     print("   POST /api/send-otp - Send OTP via email")
     print("   POST /api/verify-otp - Verify OTP code")
     print("   POST /api/signup-with-otp - Complete signup with OTP")
     port = int(os.getenv('PORT', 5001))
-    print(f"💬 Real-time chat enabled at ws://localhost:{port}/socket.io/")
-    print(f"🌐 Server running at: http://localhost:{port}")
-    print(f"🔍 Test database: http://localhost:{port}/api/test-db")
+    print(f"ðŸ’¬ Real-time chat enabled at ws://localhost:{port}/socket.io/")
+    print(f"ðŸŒ Server running at: http://localhost:{port}")
+    print(f"ðŸ” Test database: http://localhost:{port}/api/test-db")
 
     # Use SocketIO to run the app (enables WebSocket)
     socketio.run(app, debug=True, host='0.0.0.0', port=port)
@@ -1950,14 +1950,14 @@ def get_farming_weather_advisory():
             "current_conditions": current_weather,
             "farming_activities": {
                 "recommended": [
-                    "🌾 Good day for land preparation",
-                    "💧 Check soil moisture levels",
-                    "🌱 Ideal for transplanting seedlings",
-                    "🚜 Machinery operations can be done"
+                    "ðŸŒ¾ Good day for land preparation",
+                    "ðŸ’§ Check soil moisture levels",
+                    "ðŸŒ± Ideal for transplanting seedlings",
+                    "ðŸšœ Machinery operations can be done"
                 ],
                 "avoid": [
-                    "🚫 Avoid spraying if wind increases",
-                    "🚫 Heavy irrigation not needed due to recent rain"
+                    "ðŸš« Avoid spraying if wind increases",
+                    "ðŸš« Heavy irrigation not needed due to recent rain"
                 ]
             },
             "crop_specific_advice": {
@@ -1967,7 +1967,7 @@ def get_farming_weather_advisory():
                 "cotton": "Favorable conditions for flowering stage."
             },
             "alerts": generate_weather_alerts(current_weather),
-            "next_24_hours": "Partly cloudy with temperatures 25-30°C. Light winds expected."
+            "next_24_hours": "Partly cloudy with temperatures 25-30Â°C. Light winds expected."
         }
         
         return jsonify({
@@ -1990,27 +1990,27 @@ def generate_weather_farming_advice(weather_data):
     advice = []
     
     if temp > 35:
-        advice.append("🌡️ High temperature - Increase irrigation frequency")
-        advice.append("🌳 Provide shade for sensitive crops")
+        advice.append("ðŸŒ¡ï¸ High temperature - Increase irrigation frequency")
+        advice.append("ðŸŒ³ Provide shade for sensitive crops")
     elif temp < 15:
-        advice.append("❄️ Cool weather - Protect crops from frost")
-        advice.append("🔥 Consider using crop covers")
+        advice.append("â„ï¸ Cool weather - Protect crops from frost")
+        advice.append("ðŸ”¥ Consider using crop covers")
     else:
-        advice.append("🌟 Optimal temperature for most farming activities")
+        advice.append("ðŸŒŸ Optimal temperature for most farming activities")
     
     if humidity > 80:
-        advice.append("💨 High humidity - Monitor for fungal diseases")
-        advice.append("🌬️ Ensure good air circulation")
+        advice.append("ðŸ’¨ High humidity - Monitor for fungal diseases")
+        advice.append("ðŸŒ¬ï¸ Ensure good air circulation")
     elif humidity < 40:
-        advice.append("💧 Low humidity - Increase irrigation")
-        advice.append("🌿 Use mulching to retain moisture")
+        advice.append("ðŸ’§ Low humidity - Increase irrigation")
+        advice.append("ðŸŒ¿ Use mulching to retain moisture")
     
     if "rain" in condition:
-        advice.append("🌧️ Rainy conditions - Avoid spraying operations")
-        advice.append("🚜 Postpone heavy machinery work")
+        advice.append("ðŸŒ§ï¸ Rainy conditions - Avoid spraying operations")
+        advice.append("ðŸšœ Postpone heavy machinery work")
     elif "sunny" in condition:
-        advice.append("☀️ Good conditions for harvesting")
-        advice.append("🌾 Ideal for drying crops")
+        advice.append("â˜€ï¸ Good conditions for harvesting")
+        advice.append("ðŸŒ¾ Ideal for drying crops")
     
     return advice
 
@@ -2063,110 +2063,110 @@ def generate_farming_response(user_message, user_name="Farmer"):
     message = user_message.lower()
     
     # Weather and climate queries
-    if any(word in message for word in ['weather', 'rain', 'temperature', 'humidity', 'climate', 'forecast', 'मौसम', 'बारिश']):
-        return f"""🌤️ **Weather Advisory for {user_name}**
+    if any(word in message for word in ['weather', 'rain', 'temperature', 'humidity', 'climate', 'forecast', 'à¤®à¥Œà¤¸à¤®', 'à¤¬à¤¾à¤°à¤¿à¤¶']):
+        return f"""ðŸŒ¤ï¸ **Weather Advisory for {user_name}**
 
 **Current Farming Weather Guide:**
-• **Today's Conditions**: Check local temperature & humidity
-• **7-Day Forecast**: Plan sowing/harvesting activities  
-• **Rainfall Predictions**: Adjust irrigation schedules
-• **Wind Speed**: Important for spraying operations
+â€¢ **Today's Conditions**: Check local temperature & humidity
+â€¢ **7-Day Forecast**: Plan sowing/harvesting activities  
+â€¢ **Rainfall Predictions**: Adjust irrigation schedules
+â€¢ **Wind Speed**: Important for spraying operations
 
 **Weather-Based Farming Tips:**
-✅ **Sunny Days**: Ideal for harvesting, land preparation
-✅ **Rainy Season**: Focus on drainage, disease prevention
-✅ **High Humidity**: Avoid fungicide application
-✅ **Windy Conditions**: Postpone spraying activities
+âœ… **Sunny Days**: Ideal for harvesting, land preparation
+âœ… **Rainy Season**: Focus on drainage, disease prevention
+âœ… **High Humidity**: Avoid fungicide application
+âœ… **Windy Conditions**: Postpone spraying activities
 
 **Seasonal Advisory:**
 - **Kharif Season**: Monitor monsoon patterns
 - **Rabi Season**: Watch for frost warnings
 - **Summer**: Implement water conservation
 
-📱 **Next Steps**: Share your location for specific weather updates"""
+ðŸ“± **Next Steps**: Share your location for specific weather updates"""
 
     # Disease and pest management
-    elif any(word in message for word in ['disease', 'pest', 'fungus', 'bacteria', 'virus', 'spots', 'wilting', 'yellowing', 'insects', 'बीमारी', 'कीट']):
-        return f"""🦠 **Crop Disease & Pest Management for {user_name}**
+    elif any(word in message for word in ['disease', 'pest', 'fungus', 'bacteria', 'virus', 'spots', 'wilting', 'yellowing', 'insects', 'à¤¬à¥€à¤®à¤¾à¤°à¥€', 'à¤•à¥€à¤Ÿ']):
+        return f"""ðŸ¦  **Crop Disease & Pest Management for {user_name}**
 
 **Common Crop Problems:**
 
-**🍃 Leaf Issues:**
-• Yellow spots → Bacterial blight (use copper fungicide)
-• Brown patches → Fungal infection (improve air circulation)  
-• Wilting → Root rot or water stress
+**ðŸƒ Leaf Issues:**
+â€¢ Yellow spots â†’ Bacterial blight (use copper fungicide)
+â€¢ Brown patches â†’ Fungal infection (improve air circulation)  
+â€¢ Wilting â†’ Root rot or water stress
 
-**🐛 Pest Control:**
-• White flies → Yellow sticky traps + neem oil
-• Aphids → Ladybird beetles (biological control)
-• Caterpillars → Bt spray (organic solution)
+**ðŸ› Pest Control:**
+â€¢ White flies â†’ Yellow sticky traps + neem oil
+â€¢ Aphids â†’ Ladybird beetles (biological control)
+â€¢ Caterpillars â†’ Bt spray (organic solution)
 
-**🏥 Emergency Treatment:**
+**ðŸ¥ Emergency Treatment:**
 1. **Immediate**: Remove affected plant parts
 2. **Spray**: Organic neem oil solution
 3. **Improve**: Drainage and plant spacing
 4. **Monitor**: Daily inspection for 1 week
 
-**🛡️ Prevention Strategy:**
+**ðŸ›¡ï¸ Prevention Strategy:**
 - Crop rotation every season
 - Disease-resistant varieties
 - Proper plant nutrition
 - Regular field monitoring
 
-📸 **Pro Tip**: Take photos and send for specific diagnosis"""
+ðŸ“¸ **Pro Tip**: Take photos and send for specific diagnosis"""
 
     # Market prices and selling strategies
-    elif any(word in message for word in ['price', 'market', 'sell', 'selling', 'mandi', 'rate', 'cost', 'profit', 'income', 'कीमत', 'बाजार', 'भाव']):
-        return f"""💰 **Market Intelligence for {user_name}**
+    elif any(word in message for word in ['price', 'market', 'sell', 'selling', 'mandi', 'rate', 'cost', 'profit', 'income', 'à¤•à¥€à¤®à¤¤', 'à¤¬à¤¾à¤œà¤¾à¤°', 'à¤­à¤¾à¤µ']):
+        return f"""ðŸ’° **Market Intelligence for {user_name}**
 
-**Today's Approximate Rates** (₹/Quintal):
+**Today's Approximate Rates** (â‚¹/Quintal):
 
-**🌾 Cereals:**
-• Rice (Common): ₹2,000-2,500
-• Rice (Basmati): ₹3,500-4,200  
-• Wheat: ₹2,100-2,400
+**ðŸŒ¾ Cereals:**
+â€¢ Rice (Common): â‚¹2,000-2,500
+â€¢ Rice (Basmati): â‚¹3,500-4,200  
+â€¢ Wheat: â‚¹2,100-2,400
 
-**🥬 Vegetables:**
-• Onion: ₹800-1,500
-• Potato: ₹1,000-1,200
-• Tomato: ₹1,500-2,500
+**ðŸ¥¬ Vegetables:**
+â€¢ Onion: â‚¹800-1,500
+â€¢ Potato: â‚¹1,000-1,200
+â€¢ Tomato: â‚¹1,500-2,500
 
-**🌱 Cash Crops:**
-• Cotton: ₹5,800-6,500
-• Sugarcane: ₹280-320/quintal
+**ðŸŒ± Cash Crops:**
+â€¢ Cotton: â‚¹5,800-6,500
+â€¢ Sugarcane: â‚¹280-320/quintal
 
-**📈 Smart Selling Strategy:**
+**ðŸ“ˆ Smart Selling Strategy:**
 1. **Compare**: Check 3-4 nearby mandis
 2. **Timing**: Avoid peak harvest rush
 3. **Quality**: Grade your produce properly
 4. **Transport**: Calculate logistics cost
 5. **Storage**: Consider short-term storage for better prices
 
-**💡 Pro Tips:**
+**ðŸ’¡ Pro Tips:**
 - Join Farmer Producer Organizations (FPOs)
 - Use eNAM portal for transparent pricing
 - Negotiate collectively with other farmers
 
-📊 **Want current rates?** Share your crop + location"""
+ðŸ“Š **Want current rates?** Share your crop + location"""
 
     # Fertilizer and nutrition management
-    elif any(word in message for word in ['fertilizer', 'fertiliser', 'nutrition', 'NPK', 'urea', 'nutrients', 'organic', 'compost', 'manure', 'खाद', 'उर्वरक']):
-        return f"""🌱 **Fertilizer & Nutrition Guide for {user_name}**
+    elif any(word in message for word in ['fertilizer', 'fertiliser', 'nutrition', 'NPK', 'urea', 'nutrients', 'organic', 'compost', 'manure', 'à¤–à¤¾à¤¦', 'à¤‰à¤°à¥à¤µà¤°à¤•']):
+        return f"""ðŸŒ± **Fertilizer & Nutrition Guide for {user_name}**
 
 **Essential Plant Nutrients:**
 
-**🟢 Primary Nutrients:**
-• **Nitrogen (N)**: Leaf growth, green color (use urea/CAN)
-• **Phosphorus (P)**: Root development, flowering (DAP/SSP)
-• **Potassium (K)**: Disease resistance, fruit quality (MOP)
+**ðŸŸ¢ Primary Nutrients:**
+â€¢ **Nitrogen (N)**: Leaf growth, green color (use urea/CAN)
+â€¢ **Phosphorus (P)**: Root development, flowering (DAP/SSP)
+â€¢ **Potassium (K)**: Disease resistance, fruit quality (MOP)
 
-**🟡 Secondary Nutrients:**
-• Calcium, Magnesium, Sulfur (Gypsum, Dolomite)
+**ðŸŸ¡ Secondary Nutrients:**
+â€¢ Calcium, Magnesium, Sulfur (Gypsum, Dolomite)
 
-**🔵 Micronutrients:**
-• Zinc, Iron, Boron, Manganese (Foliar spray)
+**ðŸ”µ Micronutrients:**
+â€¢ Zinc, Iron, Boron, Manganese (Foliar spray)
 
-**📅 Application Schedule:**
+**ðŸ“… Application Schedule:**
 
 **Stage 1 - Pre-Sowing:**
 - Apply 25% nitrogen + full phosphorus + full potassium
@@ -2180,333 +2180,333 @@ def generate_farming_response(user_message, user_name="Farmer"):
 - Apply remaining 25% nitrogen
 - Potassium boost for fruit development
 
-**🌿 Organic Options:**
-• Vermicompost: 3-5 tonnes/hectare
-• Neem cake: Dual benefit (nutrition + pest control)
-• Green manuring: Dhaincha, Sunhemp
+**ðŸŒ¿ Organic Options:**
+â€¢ Vermicompost: 3-5 tonnes/hectare
+â€¢ Neem cake: Dual benefit (nutrition + pest control)
+â€¢ Green manuring: Dhaincha, Sunhemp
 
-**⚠️ Important**: Always do soil testing before fertilizer application"""
+**âš ï¸ Important**: Always do soil testing before fertilizer application"""
 
     # Irrigation and water management
-    elif any(word in message for word in ['irrigation', 'water', 'watering', 'drip', 'sprinkler', 'drought', 'pump', 'well', 'सिंचाई', 'पानी']):
-        return f"""💧 **Water Management for {user_name}**
+    elif any(word in message for word in ['irrigation', 'water', 'watering', 'drip', 'sprinkler', 'drought', 'pump', 'well', 'à¤¸à¤¿à¤‚à¤šà¤¾à¤ˆ', 'à¤ªà¤¾à¤¨à¥€']):
+        return f"""ðŸ’§ **Water Management for {user_name}**
 
-**🚿 Efficient Irrigation Methods:**
+**ðŸš¿ Efficient Irrigation Methods:**
 
-**💎 Drip Irrigation** (Best for water saving):
-• 40-60% water savings
-• Suitable for: Fruits, vegetables, cotton
-• Investment: ₹40,000-60,000/hectare
-• Government subsidy: 55% for small farmers
+**ðŸ’Ž Drip Irrigation** (Best for water saving):
+â€¢ 40-60% water savings
+â€¢ Suitable for: Fruits, vegetables, cotton
+â€¢ Investment: â‚¹40,000-60,000/hectare
+â€¢ Government subsidy: 55% for small farmers
 
-**🌧️ Sprinkler Irrigation**:
-• 30-40% water savings  
-• Good for: Cereals, pulses, fodder crops
-• Even water distribution
+**ðŸŒ§ï¸ Sprinkler Irrigation**:
+â€¢ 30-40% water savings  
+â€¢ Good for: Cereals, pulses, fodder crops
+â€¢ Even water distribution
 
-**🌊 Traditional Methods**:
-• Furrow irrigation: Row crops like sugarcane
-• Basin irrigation: Fruit trees
-• Border irrigation: Wheat, rice
+**ðŸŒŠ Traditional Methods**:
+â€¢ Furrow irrigation: Row crops like sugarcane
+â€¢ Basin irrigation: Fruit trees
+â€¢ Border irrigation: Wheat, rice
 
-**⏰ Irrigation Scheduling:**
+**â° Irrigation Scheduling:**
 
-**🌅 Best Time**: Early morning (5-8 AM)
-**🌅 Alternative**: Late evening (6-8 PM)
-**❌ Avoid**: Midday irrigation (water loss)
+**ðŸŒ… Best Time**: Early morning (5-8 AM)
+**ðŸŒ… Alternative**: Late evening (6-8 PM)
+**âŒ Avoid**: Midday irrigation (water loss)
 
-**💡 Water Conservation Tips:**
+**ðŸ’¡ Water Conservation Tips:**
 1. **Mulching**: Reduce evaporation by 50%
 2. **Rainwater Harvesting**: Store monsoon water
 3. **Drip + Mulch**: Maximum water efficiency
 4. **Soil moisture meters**: Precision irrigation
 
-**🚨 Water Stress Signs:**
+**ðŸš¨ Water Stress Signs:**
 - Leaf curling during day
 - Reduced growth rate
 - Early flowering
 - Wilting in morning
 
-**💰 Cost-Effective**: Start with mulching + improved furrow method"""
+**ðŸ’° Cost-Effective**: Start with mulching + improved furrow method"""
 
     # Seeds and variety selection
-    elif any(word in message for word in ['seed', 'seeds', 'variety', 'varieties', 'hybrid', 'planting', 'sowing', 'germination', 'बीज', 'किस्म']):
-        return f"""🌾 **Seeds & Varieties Guide for {user_name}**
+    elif any(word in message for word in ['seed', 'seeds', 'variety', 'varieties', 'hybrid', 'planting', 'sowing', 'germination', 'à¤¬à¥€à¤œ', 'à¤•à¤¿à¤¸à¥à¤®']):
+        return f"""ðŸŒ¾ **Seeds & Varieties Guide for {user_name}**
 
-**🎯 Seed Selection Criteria:**
+**ðŸŽ¯ Seed Selection Criteria:**
 
-**✅ Quality Checklist:**
-• Certified seed label (ISI mark)
-• 85%+ germination rate
-• Disease-free varieties
-• Adapted to local climate
+**âœ… Quality Checklist:**
+â€¢ Certified seed label (ISI mark)
+â€¢ 85%+ germination rate
+â€¢ Disease-free varieties
+â€¢ Adapted to local climate
 
-**🏆 Recommended High-Yield Varieties:**
+**ðŸ† Recommended High-Yield Varieties:**
 
-**🌾 Rice:**
-• **Basmati**: Pusa Basmati 1509, 1121
-• **Non-Basmati**: Swarna, IR-64, Samba Mahsuri
+**ðŸŒ¾ Rice:**
+â€¢ **Basmati**: Pusa Basmati 1509, 1121
+â€¢ **Non-Basmati**: Swarna, IR-64, Samba Mahsuri
 
-**🌾 Wheat:**
-• **Irrigated**: HD-2967, PBW-343, WH-147
-• **Rain-fed**: Lok-1, Sujata
+**ðŸŒ¾ Wheat:**
+â€¢ **Irrigated**: HD-2967, PBW-343, WH-147
+â€¢ **Rain-fed**: Lok-1, Sujata
 
-**🌽 Maize:**
-• **Hybrid**: Pioneer, Dekalb varieties
-• **Composite**: Suwan, Kisan
+**ðŸŒ½ Maize:**
+â€¢ **Hybrid**: Pioneer, Dekalb varieties
+â€¢ **Composite**: Suwan, Kisan
 
-**🥬 Vegetables:**
-• **Tomato**: Arka Rakshak, Pusa Ruby
-• **Onion**: Agrifound varieties
-• **Cabbage**: Golden Acre, Pride of India
+**ðŸ¥¬ Vegetables:**
+â€¢ **Tomato**: Arka Rakshak, Pusa Ruby
+â€¢ **Onion**: Agrifound varieties
+â€¢ **Cabbage**: Golden Acre, Pride of India
 
-**📋 Seed Treatment (Essential):**
+**ðŸ“‹ Seed Treatment (Essential):**
 
 **Before Sowing:**
 1. **Germination Test**: 100 seeds in wet cloth
 2. **Fungicide Treatment**: Thiram/Captan
 3. **Bio-fertilizer**: Rhizobium for legumes
 
-**🌱 Sowing Guidelines:**
-• **Depth**: 2-3 times seed diameter
-• **Spacing**: Follow variety recommendations  
-• **Time**: Early morning for better emergence
-• **Soil**: Well-prepared, moisture adequate
+**ðŸŒ± Sowing Guidelines:**
+â€¢ **Depth**: 2-3 times seed diameter
+â€¢ **Spacing**: Follow variety recommendations  
+â€¢ **Time**: Early morning for better emergence
+â€¢ **Soil**: Well-prepared, moisture adequate
 
-**💾 Storage Tips:**
+**ðŸ’¾ Storage Tips:**
 - Cool, dry place (moisture <12%)
 - Use cloth/gunny bags
 - Add neem leaves for pest control
 
-🔬 **Want variety recommendations?** Share your crop + region"""
+ðŸ”¬ **Want variety recommendations?** Share your crop + region"""
 
     # Government schemes and subsidies
-    elif any(word in message for word in ['subsidy', 'scheme', 'schemes', 'government', 'govt', 'loan', 'insurance', 'MSP', 'योजना', 'सब्सिडी', 'सरकार']):
-        return f"""🏛️ **Government Support for {user_name}**
+    elif any(word in message for word in ['subsidy', 'scheme', 'schemes', 'government', 'govt', 'loan', 'insurance', 'MSP', 'à¤¯à¥‹à¤œà¤¨à¤¾', 'à¤¸à¤¬à¥à¤¸à¤¿à¤¡à¥€', 'à¤¸à¤°à¤•à¤¾à¤°']):
+        return f"""ðŸ›ï¸ **Government Support for {user_name}**
 
-**💰 Major Central Schemes:**
+**ðŸ’° Major Central Schemes:**
 
-**🎯 PM-KISAN Samman Nidhi:**
-• ₹6,000/year direct benefit transfer
-• All landholding farmers eligible
-• Apply: pmkisan.gov.in
+**ðŸŽ¯ PM-KISAN Samman Nidhi:**
+â€¢ â‚¹6,000/year direct benefit transfer
+â€¢ All landholding farmers eligible
+â€¢ Apply: pmkisan.gov.in
 
-**🛡️ Pradhan Mantri Fasal Bima Yojana:**
-• Comprehensive crop insurance
-• Premium: 2% for Kharif, 1.5% for Rabi
-• Coverage: Natural calamities, pest attacks
+**ðŸ›¡ï¸ Pradhan Mantri Fasal Bima Yojana:**
+â€¢ Comprehensive crop insurance
+â€¢ Premium: 2% for Kharif, 1.5% for Rabi
+â€¢ Coverage: Natural calamities, pest attacks
 
-**💳 Kisan Credit Card (KCC):**
-• Easy agricultural loans
-• Low interest rates (7% for timely repayment)
-• Flexible repayment options
+**ðŸ’³ Kisan Credit Card (KCC):**
+â€¢ Easy agricultural loans
+â€¢ Low interest rates (7% for timely repayment)
+â€¢ Flexible repayment options
 
-**🌱 Equipment Subsidies:**
-• **Tractors**: 25-50% subsidy
-• **Drip Irrigation**: 55% for small farmers
-• **Solar Pumps**: 60% central subsidy
-• **Farm Machinery**: 40-50% under various schemes
+**ðŸŒ± Equipment Subsidies:**
+â€¢ **Tractors**: 25-50% subsidy
+â€¢ **Drip Irrigation**: 55% for small farmers
+â€¢ **Solar Pumps**: 60% central subsidy
+â€¢ **Farm Machinery**: 40-50% under various schemes
 
-**📱 Digital Initiatives:**
-• **eNAM**: National Agriculture Market
-• **Kisan Suvidha**: Weather, prices, dealers info
-• **Crop Insurance App**: Claim settlements
+**ðŸ“± Digital Initiatives:**
+â€¢ **eNAM**: National Agriculture Market
+â€¢ **Kisan Suvidha**: Weather, prices, dealers info
+â€¢ **Crop Insurance App**: Claim settlements
 
-**📋 Application Process:**
+**ðŸ“‹ Application Process:**
 1. **Visit**: Nearest Agriculture Office/KVK
 2. **Documents**: Aadhaar, Land records, Bank details
 3. **Online**: Most schemes have online portals
 4. **CSC Centers**: Common Service Centers
 
-**🆘 Helplines:**
-• Kisan Call Center: **1800-180-1551**
-• PM-KISAN Helpline: **155261**
+**ðŸ†˜ Helplines:**
+â€¢ Kisan Call Center: **1800-180-1551**
+â€¢ PM-KISAN Helpline: **155261**
 
-**💡 Pro Tip**: Contact your local Agricultural Extension Officer (AEO) for personalized guidance
+**ðŸ’¡ Pro Tip**: Contact your local Agricultural Extension Officer (AEO) for personalized guidance
 
-📄 **Need specific scheme info?** Share your state + requirement"""
+ðŸ“„ **Need specific scheme info?** Share your state + requirement"""
 
     # Soil testing and health management
-    elif any(word in message for word in ['soil', 'testing', 'pH', 'health', 'nutrients', 'organic matter', 'erosion', 'मिट्टी', 'भूमि']):
-        return f"""🌍 **Soil Health Management for {user_name}**
+    elif any(word in message for word in ['soil', 'testing', 'pH', 'health', 'nutrients', 'organic matter', 'erosion', 'à¤®à¤¿à¤Ÿà¥à¤Ÿà¥€', 'à¤­à¥‚à¤®à¤¿']):
+        return f"""ðŸŒ **Soil Health Management for {user_name}**
 
-**🔬 Why Soil Testing is Crucial:**
-• Know exact nutrient status
-• Avoid fertilizer wastage
-• Improve crop yield by 15-20%
-• Prevent soil degradation
+**ðŸ”¬ Why Soil Testing is Crucial:**
+â€¢ Know exact nutrient status
+â€¢ Avoid fertilizer wastage
+â€¢ Improve crop yield by 15-20%
+â€¢ Prevent soil degradation
 
-**📊 Key Testing Parameters:**
+**ðŸ“Š Key Testing Parameters:**
 
-**🎯 Basic Tests:**
-• **pH Level**: 6.0-7.5 (ideal for most crops)
-• **Electrical Conductivity**: Salinity check
-• **Organic Carbon**: Should be >0.5%
+**ðŸŽ¯ Basic Tests:**
+â€¢ **pH Level**: 6.0-7.5 (ideal for most crops)
+â€¢ **Electrical Conductivity**: Salinity check
+â€¢ **Organic Carbon**: Should be >0.5%
 
-**🧪 Nutrient Analysis:**
-• **NPK**: Primary nutrients
-• **Secondary**: Ca, Mg, S
-• **Micronutrients**: Zn, Fe, Mn, Cu, B
+**ðŸ§ª Nutrient Analysis:**
+â€¢ **NPK**: Primary nutrients
+â€¢ **Secondary**: Ca, Mg, S
+â€¢ **Micronutrients**: Zn, Fe, Mn, Cu, B
 
-**🆓 Free Testing Options:**
-• **Soil Health Cards**: Government provides free
-• **KVK Labs**: Krishi Vigyan Kendras
-• **Agricultural Universities**: Subsidized rates
+**ðŸ†“ Free Testing Options:**
+â€¢ **Soil Health Cards**: Government provides free
+â€¢ **KVK Labs**: Krishi Vigyan Kendras
+â€¢ **Agricultural Universities**: Subsidized rates
 
-**💚 Soil Health Improvement:**
+**ðŸ’š Soil Health Improvement:**
 
-**📈 Increase Organic Matter:**
+**ðŸ“ˆ Increase Organic Matter:**
 1. **Farmyard Manure**: 10-15 tonnes/hectare
 2. **Compost**: Well-decomposed organic matter
 3. **Green Manuring**: Dhaincha, Sunhemp, Cluster bean
 4. **Crop Residue**: Incorporate after harvest
 
-**⚖️ pH Correction:**
-• **Acidic Soil** (pH <6): Add lime/dolomite
-• **Alkaline Soil** (pH >8): Add gypsum/sulfur
+**âš–ï¸ pH Correction:**
+â€¢ **Acidic Soil** (pH <6): Add lime/dolomite
+â€¢ **Alkaline Soil** (pH >8): Add gypsum/sulfur
 
-**🛡️ Prevent Soil Erosion:**
-• Contour farming on slopes
-• Cover crops during off-season
-• Windbreaks/shelter belts
-• Avoid excessive tillage
+**ðŸ›¡ï¸ Prevent Soil Erosion:**
+â€¢ Contour farming on slopes
+â€¢ Cover crops during off-season
+â€¢ Windbreaks/shelter belts
+â€¢ Avoid excessive tillage
 
-**🌱 Soil Health Indicators:**
-✅ **Good Soil**: Dark color, earthworms present, good water infiltration
-❌ **Poor Soil**: Light color, compacted, poor drainage
+**ðŸŒ± Soil Health Indicators:**
+âœ… **Good Soil**: Dark color, earthworms present, good water infiltration
+âŒ **Poor Soil**: Light color, compacted, poor drainage
 
-**📞 Contact for Testing:**
+**ðŸ“ž Contact for Testing:**
 - District Collector Office
 - Nearest KVK: kvk.icar.gov.in
 - Agricultural University labs
 
-🔍 **Quick Test**: Jar test for soil texture at home"""
+ðŸ” **Quick Test**: Jar test for soil texture at home"""
 
     # Organic farming and sustainable practices
-    elif any(word in message for word in ['organic', 'natural', 'sustainable', 'chemical free', 'bio', 'environment', 'जैविक', 'प्राकृतिक']):
-        return f"""🌿 **Organic Farming Guide for {user_name}**
+    elif any(word in message for word in ['organic', 'natural', 'sustainable', 'chemical free', 'bio', 'environment', 'à¤œà¥ˆà¤µà¤¿à¤•', 'à¤ªà¥à¤°à¤¾à¤•à¥ƒà¤¤à¤¿à¤•']):
+        return f"""ðŸŒ¿ **Organic Farming Guide for {user_name}**
 
-**🎯 Organic Farming Benefits:**
-• Premium prices (20-30% higher)
-• Reduced input costs
-• Better soil health
-• Safe food production
-• Environmental conservation
+**ðŸŽ¯ Organic Farming Benefits:**
+â€¢ Premium prices (20-30% higher)
+â€¢ Reduced input costs
+â€¢ Better soil health
+â€¢ Safe food production
+â€¢ Environmental conservation
 
-**📜 Certification Process:**
-• **Duration**: 3-year conversion period
-• **Agencies**: NPOP certified bodies
-• **Cost**: ₹15,000-25,000 for group certification
-• **Inspection**: Annual third-party audit
+**ðŸ“œ Certification Process:**
+â€¢ **Duration**: 3-year conversion period
+â€¢ **Agencies**: NPOP certified bodies
+â€¢ **Cost**: â‚¹15,000-25,000 for group certification
+â€¢ **Inspection**: Annual third-party audit
 
-**🌱 Organic Inputs:**
+**ðŸŒ± Organic Inputs:**
 
-**🍃 Organic Fertilizers:**
-• **Vermicompost**: 3-5 tonnes/hectare
-• **FYM**: 10-15 tonnes/hectare  
-• **Compost**: 5-8 tonnes/hectare
-• **Green Manure**: Leguminous crops
+**ðŸƒ Organic Fertilizers:**
+â€¢ **Vermicompost**: 3-5 tonnes/hectare
+â€¢ **FYM**: 10-15 tonnes/hectare  
+â€¢ **Compost**: 5-8 tonnes/hectare
+â€¢ **Green Manure**: Leguminous crops
 
-**🦠 Organic Pest Control:**
-• **Neem Oil**: Broad spectrum bio-pesticide
-• **Trichoderma**: Fungal disease control
-• **NPV**: Caterpillar control (biological)
-• **Pheromone Traps**: Pest monitoring
+**ðŸ¦  Organic Pest Control:**
+â€¢ **Neem Oil**: Broad spectrum bio-pesticide
+â€¢ **Trichoderma**: Fungal disease control
+â€¢ **NPV**: Caterpillar control (biological)
+â€¢ **Pheromone Traps**: Pest monitoring
 
-**🐛 Beneficial Insects:**
-• **Ladybird Beetle**: Aphid control
-• **Parasitic Wasps**: Natural pest control
-• **Spiders**: General predators
+**ðŸ› Beneficial Insects:**
+â€¢ **Ladybird Beetle**: Aphid control
+â€¢ **Parasitic Wasps**: Natural pest control
+â€¢ **Spiders**: General predators
 
-**📈 Soil Building (3-Year Plan):**
+**ðŸ“ˆ Soil Building (3-Year Plan):**
 
 **Year 1**: Heavy organic matter addition
 **Year 2**: Crop rotation with legumes  
 **Year 3**: Balanced organic system
 
-**💰 Economics:**
-• **Initial Investment**: Higher (30-40%)
-• **Break-even**: Year 2-3
-• **Long-term**: 25-30% higher profits
+**ðŸ’° Economics:**
+â€¢ **Initial Investment**: Higher (30-40%)
+â€¢ **Break-even**: Year 2-3
+â€¢ **Long-term**: 25-30% higher profits
 
-**🛒 Market Linkages:**
-• Organic stores and supermarkets
-• Direct to consumer sales
-• Export opportunities (higher prices)
-• Online platforms
+**ðŸ›’ Market Linkages:**
+â€¢ Organic stores and supermarkets
+â€¢ Direct to consumer sales
+â€¢ Export opportunities (higher prices)
+â€¢ Online platforms
 
-**🎓 Training Available:**
-• KVK programs
-• NABARD schemes
-• NGO training centers
+**ðŸŽ“ Training Available:**
+â€¢ KVK programs
+â€¢ NABARD schemes
+â€¢ NGO training centers
 
-**📋 Record Keeping** (Essential):
+**ðŸ“‹ Record Keeping** (Essential):
 - Input usage log
 - Pest/disease management
 - Harvest records
 - Sales documentation
 
-🌱 **Ready to Start?** Begin with small area (1-2 acres)"""
+ðŸŒ± **Ready to Start?** Begin with small area (1-2 acres)"""
 
     # General farming and crop management
     else:
-        return f"""🌾 **AgriGuru - Your Personal Farming Assistant**
+        return f"""ðŸŒ¾ **KisanMitra - Your Personal Farming Assistant**
 
-**Hello {user_name}! 👋**
+**Hello {user_name}! ðŸ‘‹**
 
 I'm here to help you with all your farming needs. Ask me about:
 
-**🌤️ Weather & Climate Planning**
-📞 *"What's the weather forecast for next week?"*
+**ðŸŒ¤ï¸ Weather & Climate Planning**
+ðŸ“ž *"What's the weather forecast for next week?"*
 
-**🦠 Disease & Pest Solutions**
-📞 *"My tomato plants have yellow spots"*
+**ðŸ¦  Disease & Pest Solutions**
+ðŸ“ž *"My tomato plants have yellow spots"*
 
-**💰 Market Intelligence**
-📞 *"Current wheat prices in my area"*
+**ðŸ’° Market Intelligence**
+ðŸ“ž *"Current wheat prices in my area"*
 
-**🌱 Fertilizer & Nutrition**
-📞 *"Best fertilizer for cotton flowering stage"*
+**ðŸŒ± Fertilizer & Nutrition**
+ðŸ“ž *"Best fertilizer for cotton flowering stage"*
 
-**💧 Irrigation & Water Management**
-📞 *"How to save water with drip irrigation?"*
+**ðŸ’§ Irrigation & Water Management**
+ðŸ“ž *"How to save water with drip irrigation?"*
 
-**🌾 Seeds & Varieties**
-📞 *"Which rice variety for my region?"*
+**ðŸŒ¾ Seeds & Varieties**
+ðŸ“ž *"Which rice variety for my region?"*
 
-**🏛️ Government Schemes**
-📞 *"Subsidies available for farm equipment"*
+**ðŸ›ï¸ Government Schemes**
+ðŸ“ž *"Subsidies available for farm equipment"*
 
-**🌍 Soil Testing & Health**
-📞 *"How to improve soil fertility naturally?"*
+**ðŸŒ Soil Testing & Health**
+ðŸ“ž *"How to improve soil fertility naturally?"*
 
-**🌿 Organic Farming**
-📞 *"Steps to start organic farming"*
+**ðŸŒ¿ Organic Farming**
+ðŸ“ž *"Steps to start organic farming"*
 
-**🚨 Quick Emergency Help:**
+**ðŸš¨ Quick Emergency Help:**
 
-**📱 Immediate Support:**
-• Kisan Call Center: **1800-180-1551**
-• Kisan Suvidha App: Weather + Market
-• eNAM Portal: Transparent pricing
+**ðŸ“± Immediate Support:**
+â€¢ Kisan Call Center: **1800-180-1551**
+â€¢ Kisan Suvidha App: Weather + Market
+â€¢ eNAM Portal: Transparent pricing
 
-**🏥 Expert Consultation:**
-• Local KVK: Krishi Vigyan Kendra
-• Agricultural University
-• Progressive farmers in your area
+**ðŸ¥ Expert Consultation:**
+â€¢ Local KVK: Krishi Vigyan Kendra
+â€¢ Agricultural University
+â€¢ Progressive farmers in your area
 
-**💡 Today's Farming Tip:**
+**ðŸ’¡ Today's Farming Tip:**
 Monitor your crops daily - early detection prevents major losses!
 
-**🎯 Popular Queries:**
-• "Organic pest control for vegetables"
-• "Government subsidy for solar pump"  
-• "Best time to apply fertilizer"
-• "How to increase crop yield naturally"
+**ðŸŽ¯ Popular Queries:**
+â€¢ "Organic pest control for vegetables"
+â€¢ "Government subsidy for solar pump"  
+â€¢ "Best time to apply fertilizer"
+â€¢ "How to increase crop yield naturally"
 
-💬 **Ask me anything!** I'm here 24/7 to help improve your farming success.
+ðŸ’¬ **Ask me anything!** I'm here 24/7 to help improve your farming success.
 
-🌟 **Remember**: Good farming = Timely action + Right knowledge"""
+ðŸŒŸ **Remember**: Good farming = Timely action + Right knowledge"""
 
 @app.route('/api/jotform/webhook', methods=['POST'])
 def jotform_webhook():
@@ -2536,7 +2536,7 @@ def jotform_webhook():
             
             # Add location context if provided
             if user_location:
-                response_message += f"\n\n📍 **Your Location**: {user_location}\n*For location-specific advice, our local expert will contact you soon.*"
+                response_message += f"\n\nðŸ“ **Your Location**: {user_location}\n*For location-specific advice, our local expert will contact you soon.*"
             
             # Send WhatsApp response if phone number provided
             if user_phone:

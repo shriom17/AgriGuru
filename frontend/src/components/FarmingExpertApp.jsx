@@ -1,4 +1,4 @@
-// Enhanced React Frontend for Farming Expert
+﻿// Enhanced React Frontend for Farming Expert
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FarmingExpertApp.css';
@@ -100,7 +100,7 @@ function FarmingExpertApp() {
     return (
         <div className="farming-expert-app">
             <header className="app-header">
-                <h1>🌾 AgriGuru - Farming Expert AI</h1>
+                <h1>🌾 KisanMitra - Farming Expert AI</h1>
                 <p>Your comprehensive agricultural assistant</p>
             </header>
 

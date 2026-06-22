@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 import './WhatsAppSettings.css';
@@ -467,7 +467,7 @@ const WhatsAppSettings = () => {
       <div className="whatsapp-info">
         <h3>About WhatsApp Alerts</h3>
         <p>
-          AgriGuru can send you important alerts via WhatsApp for:
+          KisanMitra can send you important alerts via WhatsApp for:
         </p>
         <ul>
           <li><strong>Weather Alerts:</strong> Get notified about weather changes affecting your farm</li>

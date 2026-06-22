@@ -1,13 +1,13 @@
-# 💳 Payment Gateway Integration Guide
+﻿# ðŸ’³ Payment Gateway Integration Guide
 
 ## Overview
-AgriGuru now supports multiple payment methods for a seamless shopping experience:
+KisanMitra now supports multiple payment methods for a seamless shopping experience:
 
 1. **Indian Payment Gateway** - UPI, Cards, NetBanking, Wallets
 2. **Cash on Delivery** - Traditional payment method
 3. **Blockchain Payments** - Cryptocurrency support (advanced)
 
-## 🚀 Quick Setup
+## ðŸš€ Quick Setup
 
 ### 1. Indian Payment Gateway (Primary)
 Our custom payment gateway supports:
@@ -18,11 +18,11 @@ Our custom payment gateway supports:
 - **Cash on Delivery**: No online payment needed
 
 #### Features:
-- ✅ Direct UPI app integration
-- ✅ Real-time payment status
-- ✅ Mobile-optimized interface
-- ✅ Multiple payment options in one place
-- ✅ Secure transaction handling
+- âœ… Direct UPI app integration
+- âœ… Real-time payment status
+- âœ… Mobile-optimized interface
+- âœ… Multiple payment options in one place
+- âœ… Secure transaction handling
 
 ### 2. Razorpay Integration (Optional)
 For production use, you can integrate Razorpay:
@@ -44,20 +44,20 @@ For production use, you can integrate Razorpay:
 - Dashboard & analytics
 - Mobile SDK support
 
-## 🔧 Implementation Details
+## ðŸ”§ Implementation Details
 
 ### File Structure
 ```
 frontend/src/components/
-├── IndianPaymentGateway/
-│   ├── IndianPaymentGateway.jsx
-│   └── IndianPaymentGateway.css
-├── RazorpayCheckout/
-│   ├── RazorpayCheckout.jsx
-│   └── RazorpayCheckout.css
-└── BlockchainCheckout/
-    ├── BlockchainCheckout.jsx
-    └── BlockchainCheckout.css
+â”œâ”€â”€ IndianPaymentGateway/
+â”‚   â”œâ”€â”€ IndianPaymentGateway.jsx
+â”‚   â””â”€â”€ IndianPaymentGateway.css
+â”œâ”€â”€ RazorpayCheckout/
+â”‚   â”œâ”€â”€ RazorpayCheckout.jsx
+â”‚   â””â”€â”€ RazorpayCheckout.css
+â””â”€â”€ BlockchainCheckout/
+    â”œâ”€â”€ BlockchainCheckout.jsx
+    â””â”€â”€ BlockchainCheckout.css
 ```
 
 ### Payment Flow
@@ -67,7 +67,7 @@ frontend/src/components/
 4. **Order confirmation** and receipt generation
 5. **Cart cleared** and success message shown
 
-## 📱 UPI Payment URLs
+## ðŸ“± UPI Payment URLs
 
 ### Supported URL Schemes:
 - **Google Pay**: `tez://upi/pay?...`
@@ -84,14 +84,14 @@ frontend/src/components/
 - `cu`: Currency (INR)
 - `tr`: Transaction Reference
 
-## 🛡️ Security Features
+## ðŸ›¡ï¸ Security Features
 
 ### Payment Security:
-- ✅ No card details stored
-- ✅ Encrypted payment links
-- ✅ Transaction ID generation
-- ✅ Order verification system
-- ✅ Secure redirect handling
+- âœ… No card details stored
+- âœ… Encrypted payment links
+- âœ… Transaction ID generation
+- âœ… Order verification system
+- âœ… Secure redirect handling
 
 ### Data Protection:
 - Order details stored locally
@@ -99,7 +99,7 @@ frontend/src/components/
 - Secure API communication
 - User privacy maintained
 
-## 🔄 Testing
+## ðŸ”„ Testing
 
 ### Test Scenarios:
 1. **UPI Payment**: Click any UPI app button
@@ -121,7 +121,7 @@ expiry: '12/25'
 cvv: '123'
 ```
 
-## 📊 Analytics & Tracking
+## ðŸ“Š Analytics & Tracking
 
 ### Order Tracking:
 - Transaction IDs generated
@@ -135,7 +135,7 @@ cvv: '123'
 - Popular products
 - Customer demographics
 
-## 🚀 Go Live Checklist
+## ðŸš€ Go Live Checklist
 
 ### Before Production:
 - [ ] Set up merchant UPI ID
@@ -154,7 +154,7 @@ cvv: '123'
 - [ ] Add new payment methods as needed
 - [ ] Regular security audits
 
-## 🆘 Troubleshooting
+## ðŸ†˜ Troubleshooting
 
 ### Common Issues:
 
@@ -174,11 +174,11 @@ cvv: '123'
    - Contact support if needed
 
 ### Support Contacts:
-- Technical Issues: tech@agriguru.com
-- Payment Issues: payments@agriguru.com
-- General Support: support@agriguru.com
+- Technical Issues: tech@KisanMitra.com
+- Payment Issues: payments@KisanMitra.com
+- General Support: support@KisanMitra.com
 
-## 📈 Future Enhancements
+## ðŸ“ˆ Future Enhancements
 
 ### Planned Features:
 - **International payments** (PayPal, Stripe)

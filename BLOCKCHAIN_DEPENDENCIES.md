@@ -1,4 +1,4 @@
-# Blockchain Integration Dependencies for AgriGuru
+﻿# Blockchain Integration Dependencies for KisanMitra
 
 ## Frontend Dependencies (Add to package.json)
 ```json

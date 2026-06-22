@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import './ModalStyles.css';
 
 const SupportModal = ({ onClose }) => {
@@ -121,7 +121,7 @@ const SupportModal = ({ onClose }) => {
                   <div className="method-icon">📧</div>
                   <div className="method-info">
                     <h4>Email Support</h4>
-                    <p>support@agriguru.com</p>
+                    <p>support@KisanMitra.com</p>
                     <span>Response within 2 hours</span>
                   </div>
                   <button className="contact-btn">Send Email</button>
@@ -141,7 +141,7 @@ const SupportModal = ({ onClose }) => {
                   <div className="method-icon">🌐</div>
                   <div className="method-info">
                     <h4>Social Media</h4>
-                    <p>@AgriGuruOfficial</p>
+                    <p>@KisanMitraOfficial</p>
                     <span>Follow us for updates</span>
                   </div>
                   <button className="contact-btn">Follow Us</button>
@@ -181,7 +181,7 @@ const SupportModal = ({ onClose }) => {
                   </div>
                   <div className="chat-messages">
                     <div className="message agent-message">
-                      <span>Hi! I'm Rahul from AgriGuru support. How can I help you today?</span>
+                      <span>Hi! I'm Rahul from KisanMitra support. How can I help you today?</span>
                       <span className="message-time">Just now</span>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
@@ -86,7 +86,7 @@ const SignUp = () => {
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Create Account</h2>
-        <p className="subtitle">Join AgriGuru and get expert farming assistance</p>
+        <p className="subtitle">Join KisanMitra and get expert farming assistance</p>
         
         {/* User Type Selection */}
         <div className="user-type-selection">

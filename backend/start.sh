@@ -1,8 +1,8 @@
-#!/bin/bash
-# AgriGuru AI Backend Server Starter
+﻿#!/bin/bash
+# KisanMitra AI Backend Server Starter
 # Cross-platform shell script for Unix/Linux/Mac systems
 
-echo "🌾 AgriGuru AI Backend Server Starter"
+echo "🌾 KisanMitra AI Backend Server Starter"
 echo "=================================================="
 
 # Check if Python is installed
@@ -35,7 +35,7 @@ fi
 
 # Start the server
 echo ""
-echo "🚀 Starting AgriGuru AI Backend Server..."
+echo "🚀 Starting KisanMitra AI Backend Server..."
 echo "🌐 Server will run on: http://localhost:5000"
 echo "🧪 Test interface: test_ai.html"
 echo "💡 Press Ctrl+C to stop the server"

@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Google OAuth Configuration Checker for AgriGuru
+Google OAuth Configuration Checker for KisanMitra
 This script verifies that Google login is properly configured.
 """
 
@@ -17,7 +17,7 @@ def print_header(text):
 
 def print_status(check_name, passed, message=""):
     """Print check status"""
-    status = "✅ PASS" if passed else "❌ FAIL"
+    status = "âœ… PASS" if passed else "âŒ FAIL"
     print(f"{status} - {check_name}")
     if message:
         print(f"       {message}")
@@ -186,9 +186,9 @@ def check_frontend_code():
 
 def main():
     """Run all checks"""
-    print("\n" + "🔍" * 30)
-    print("  AgriGuru Google OAuth Configuration Checker")
-    print("🔍" * 30)
+    print("\n" + "ðŸ”" * 30)
+    print("  KisanMitra Google OAuth Configuration Checker")
+    print("ðŸ”" * 30)
     
     all_passed = True
     
@@ -211,22 +211,22 @@ def main():
     print_header("Summary")
     
     if all_passed:
-        print("🎉 " + "=" * 56)
+        print("ðŸŽ‰ " + "=" * 56)
         print("   ALL CHECKS PASSED!")
         print("   Your Google login is properly configured.")
         print("   " + "=" * 56)
-        print("\n📝 Next Steps:")
+        print("\nðŸ“ Next Steps:")
         print("   1. Make sure your Google Cloud Console is configured")
         print("   2. Start the backend: cd back && python main.py")
         print("   3. Start the frontend: cd frontend && npm start")
         print("   4. Test Google login at: http://localhost:3000/login")
-        print("\n✨ Happy farming with AgriGuru! 🌾")
+        print("\nâœ¨ Happy farming with KisanMitra! ðŸŒ¾")
     else:
-        print("⚠️  " + "=" * 56)
+        print("âš ï¸  " + "=" * 56)
         print("   SOME CHECKS FAILED")
         print("   Please fix the issues above and run this script again.")
         print("   " + "=" * 56)
-        print("\n📖 For detailed setup instructions, see:")
+        print("\nðŸ“– For detailed setup instructions, see:")
         print("   GOOGLE_LOGIN_ACTIVATION_GUIDE.md")
         return 1
     
@@ -234,3 +234,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+

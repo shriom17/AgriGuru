@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Kaggle Dataset Downloader for AgriGuru Yield Prediction
+Kaggle Dataset Downloader for KisanMitra Yield Prediction
 Downloads and processes agricultural datasets from Kaggle
 """
 
@@ -23,12 +23,12 @@ class KaggleDatasetManager:
         """Setup Kaggle API credentials"""
         try:
             import kaggle
-            print("✅ Kaggle API is configured and ready!")
+            print("âœ… Kaggle API is configured and ready!")
             return True
         except OSError as e:
             if "credentials" in str(e):
-                print("❌ Kaggle API credentials not found!")
-                print("\n🔧 Setup Instructions:")
+                print("âŒ Kaggle API credentials not found!")
+                print("\nðŸ”§ Setup Instructions:")
                 print("1. Go to https://www.kaggle.com/account")
                 print("2. Click 'Create New API Token'")
                 print("3. Download kaggle.json file")
@@ -38,10 +38,10 @@ class KaggleDatasetManager:
                 print("5. Make sure the file permissions are correct (chmod 600 kaggle.json)")
                 return False
             else:
-                print(f"❌ Error setting up Kaggle API: {e}")
+                print(f"âŒ Error setting up Kaggle API: {e}")
                 return False
         except ImportError:
-            print("❌ Kaggle package not installed!")
+            print("âŒ Kaggle package not installed!")
             print("Run: pip install kaggle")
             return False
     
@@ -52,7 +52,7 @@ class KaggleDatasetManager:
             
         try:
             import kaggle
-            print(f"📥 Downloading dataset: {dataset_id}")
+            print(f"ðŸ“¥ Downloading dataset: {dataset_id}")
             
             dataset_path = self.data_dir / dataset_id.replace('/', '_')
             dataset_path.mkdir(parents=True, exist_ok=True)
@@ -63,11 +63,11 @@ class KaggleDatasetManager:
                 unzip=extract
             )
             
-            print(f"✅ Dataset downloaded to: {dataset_path}")
+            print(f"âœ… Dataset downloaded to: {dataset_path}")
             return dataset_path
             
         except Exception as e:
-            print(f"❌ Error downloading dataset: {e}")
+            print(f"âŒ Error downloading dataset: {e}")
             return False
     
     def process_crop_production_dataset(self, dataset_path):
@@ -94,24 +94,24 @@ class KaggleDatasetManager:
                 csv_files = list(dataset_path.glob('*.csv'))
                 if csv_files:
                     csv_file = csv_files[0]
-                    print(f"📄 Using CSV file: {csv_file.name}")
+                    print(f"ðŸ“„ Using CSV file: {csv_file.name}")
                 else:
-                    print("❌ No CSV files found in dataset")
+                    print("âŒ No CSV files found in dataset")
                     return None
             
             # Read and process the dataset
             df = pd.read_csv(csv_file)
-            print(f"📊 Dataset loaded: {len(df)} rows, {len(df.columns)} columns")
-            print(f"📋 Columns: {list(df.columns)}")
+            print(f"ðŸ“Š Dataset loaded: {len(df)} rows, {len(df.columns)} columns")
+            print(f"ðŸ“‹ Columns: {list(df.columns)}")
             
             # Display sample data
-            print("\n📈 Sample data:")
+            print("\nðŸ“ˆ Sample data:")
             print(df.head())
             
             # Basic statistics
             if 'Production' in df.columns or 'production' in df.columns:
                 prod_col = 'Production' if 'Production' in df.columns else 'production'
-                print(f"\n📊 Production statistics:")
+                print(f"\nðŸ“Š Production statistics:")
                 print(df[prod_col].describe())
             
             # Save processed data for frontend
@@ -121,11 +121,11 @@ class KaggleDatasetManager:
             with open(output_file, 'w') as f:
                 json.dump(processed_data, f, indent=2)
             
-            print(f"✅ Processed data saved to: {output_file}")
+            print(f"âœ… Processed data saved to: {output_file}")
             return processed_data
             
         except Exception as e:
-            print(f"❌ Error processing dataset: {e}")
+            print(f"âŒ Error processing dataset: {e}")
             return None
     
     def prepare_frontend_data(self, df):
@@ -176,12 +176,12 @@ class KaggleDatasetManager:
             }
             
         except Exception as e:
-            print(f"❌ Error preparing frontend data: {e}")
+            print(f"âŒ Error preparing frontend data: {e}")
             return {'error': str(e)}
 
 def main():
     """Main function to download and process datasets"""
-    print("🌾 AgriGuru Kaggle Dataset Downloader")
+    print("ðŸŒ¾ KisanMitra Kaggle Dataset Downloader")
     print("=" * 50)
     
     manager = KaggleDatasetManager()
@@ -210,7 +210,7 @@ def main():
         }
     }
     
-    print("\n📊 Available Datasets:")
+    print("\nðŸ“Š Available Datasets:")
     for key, info in datasets.items():
         print(f"{key}. {info['name']}")
         print(f"   {info['description']}")
@@ -218,27 +218,27 @@ def main():
         print()
     
     # Auto-download the first dataset as recommended
-    print("🚀 Auto-downloading recommended dataset...")
+    print("ðŸš€ Auto-downloading recommended dataset...")
     dataset_id = datasets['1']['id']
     
     dataset_path = manager.download_dataset(dataset_id)
     
     if dataset_path:
-        print("\n🔄 Processing dataset...")
+        print("\nðŸ”„ Processing dataset...")
         processed_data = manager.process_crop_production_dataset(dataset_path)
         
         if processed_data:
-            print("\n✅ Dataset ready for use in AgriGuru!")
-            print(f"📁 Data location: {manager.data_dir}")
-            print("\n📋 Next steps:")
+            print("\nâœ… Dataset ready for use in KisanMitra!")
+            print(f"ðŸ“ Data location: {manager.data_dir}")
+            print("\nðŸ“‹ Next steps:")
             print("1. The processed data is now available in JSON format")
             print("2. Update your React service to use this real data")
             print("3. Test the yield prediction component")
         else:
-            print("❌ Failed to process dataset")
+            print("âŒ Failed to process dataset")
     else:
-        print("❌ Failed to download dataset")
-        print("\n💡 Manual Download Instructions:")
+        print("âŒ Failed to download dataset")
+        print("\nðŸ’¡ Manual Download Instructions:")
         print(f"1. Go to: https://www.kaggle.com/datasets/{dataset_id}")
         print("2. Click 'Download' button")
         print("3. Extract the ZIP file to: data/kaggle/")

@@ -1,4 +1,4 @@
-# AgriGuru WhatsApp Alerts System
+﻿# KisanMitra WhatsApp Alerts System
 
 This system enables automated WhatsApp alerts for farmers about weather conditions, crop health, and market prices using Twilio's WhatsApp API.
 
@@ -37,11 +37,11 @@ This system enables automated WhatsApp alerts for farmers about weather conditio
 
 ### 3. User Setup
 
-For users to receive WhatsApp messages from the AgriGuru system:
+For users to receive WhatsApp messages from the KisanMitra system:
 
 1. They must join the Twilio WhatsApp sandbox by sending a message to your Twilio WhatsApp number with the join code
 2. Example: Send `join adventure-owner` to +14155238886
-3. They should verify their phone number in the AgriGuru WhatsApp settings
+3. They should verify their phone number in the KisanMitra WhatsApp settings
 4. Select their preferred alert types and frequency
 
 ## Alert Types and Frequencies
@@ -88,3 +88,4 @@ Common issues and solutions:
    - Check if the alert preferences are enabled in the user profile
    - Verify the API URLs in the scheduler configuration
    - Test the alert endpoints manually using Postman or similar tools
+

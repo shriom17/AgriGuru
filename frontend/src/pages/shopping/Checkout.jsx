@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMarketplace } from '../../contexts/MarketplaceContext';
 import BlockchainCheckout from '../../components/BlockchainCheckout/BlockchainCheckout';
@@ -164,9 +164,9 @@ const Checkout = () => {
         status: 'confirmed'
       };
       
-      const existingOrders = JSON.parse(localStorage.getItem('agriguru_orders') || '[]');
+      const existingOrders = JSON.parse(localStorage.getItem('KisanMitra_orders') || '[]');
       existingOrders.push(order);
-      localStorage.setItem('agriguru_orders', JSON.stringify(existingOrders));
+      localStorage.setItem('KisanMitra_orders', JSON.stringify(existingOrders));
       
       // Clear cart and show success
       clearCart();
@@ -591,9 +591,9 @@ const Checkout = () => {
               status: 'confirmed'
             };
             
-            const existingOrders = JSON.parse(localStorage.getItem('agriGuruOrders') || '[]');
+            const existingOrders = JSON.parse(localStorage.getItem('KisanMitraOrders') || '[]');
             existingOrders.unshift(order);
-            localStorage.setItem('agriGuruOrders', JSON.stringify(existingOrders));
+            localStorage.setItem('KisanMitraOrders', JSON.stringify(existingOrders));
             
             setOrderConfirmed(true);
             setShowIndianPaymentGateway(false);

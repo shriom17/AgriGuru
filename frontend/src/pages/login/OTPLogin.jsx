@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -139,7 +139,7 @@ const OTPLogin = () => {
       <div className="otp-login-form">
         <div className="otp-header">
           <h2>🔐 Secure Login</h2>
-          <p>Sign in to AgriGuru with OTP verification</p>
+          <p>Sign in to KisanMitra with OTP verification</p>
         </div>
 
         {error && <div className="error-message">{error}</div>}
