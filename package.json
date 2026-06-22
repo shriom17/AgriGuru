@@ -1,7 +1,7 @@
-{
-  "name": "agriguru",
+﻿{
+  "name": "KisanMitra",
   "version": "1.0.0",
-  "description": "AgriGuru - Smart Agricultural Management System",
+  "description": "KisanMitra - Smart Agricultural Management System",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"cd backend && python simple_app.py\" \"cd frontend && npm start\"",
@@ -41,10 +41,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shriom17/AgriGuru.git"
+    "url": "https://github.com/shriom17/KisanMitra.git"
   },
   "bugs": {
-    "url": "https://github.com/shriom17/AgriGuru/issues"
+    "url": "https://github.com/shriom17/KisanMitra/issues"
   },
-  "homepage": "https://github.com/shriom17/AgriGuru#readme"
+  "homepage": "https://github.com/shriom17/KisanMitra#readme"
 }
+

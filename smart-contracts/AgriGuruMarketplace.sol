@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+﻿// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -6,10 +6,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /**
- * @title AgriGuru Marketplace Smart Contract
+ * @title KisanMitra Marketplace Smart Contract
  * @dev Decentralized marketplace for agricultural products and equipment
  */
-contract AgriGuruMarketplace is ReentrancyGuard, Ownable {
+contract KisanMitraMarketplace is ReentrancyGuard, Ownable {
     
     // Structs
     struct Product {

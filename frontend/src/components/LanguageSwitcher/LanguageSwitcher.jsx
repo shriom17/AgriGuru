@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './LanguageSwitcher.css';
 
@@ -41,7 +41,7 @@ const LanguageSwitcher = () => {
     
     // Store language preference in localStorage
     localStorage.setItem('preferredLanguage', languageCode);
-    localStorage.setItem('agriguru_language', languageCode);
+    localStorage.setItem('KisanMitra_language', languageCode);
     
     // Update document direction for RTL languages if needed
     document.documentElement.setAttribute('dir', languageCode === 'ar' ? 'rtl' : 'ltr');

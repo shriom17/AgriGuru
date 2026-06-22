@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useMarketplace } from '../../contexts/MarketplaceContext';
 import { toast } from 'react-toastify';
 import './IndianPaymentGateway.css';
@@ -62,20 +62,20 @@ const IndianPaymentGateway = ({ onClose, onSuccess }) => {
     
     try {
       // Generate UPI payment URL
-      const merchantVPA = 'agriguru@paytm'; // Your merchant UPI ID
+      const merchantVPA = 'KisanMitra@paytm'; // Your merchant UPI ID
       const amount = cartTotal;
       const txnId = 'AG' + Date.now();
-      const txnNote = 'AgriGuru Purchase';
+      const txnNote = 'KisanMitra Purchase';
       
       // UPI URL format
-      const baseUpiUrl = `upi://pay?pa=${merchantVPA}&pn=AgriGuru&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`;
+      const baseUpiUrl = `upi://pay?pa=${merchantVPA}&pn=KisanMitra&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`;
       
       // App-specific deep links
       const appUrls = {
-        googlepay: `tez://upi/pay?pa=${merchantVPA}&pn=AgriGuru&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
-        phonepe: `phonepe://pay?pa=${merchantVPA}&pn=AgriGuru&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
-        paytm: `paytmmp://pay?pa=${merchantVPA}&pn=AgriGuru&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
-        bhim: `bhim://pay?pa=${merchantVPA}&pn=AgriGuru&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
+        googlepay: `tez://upi/pay?pa=${merchantVPA}&pn=KisanMitra&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
+        phonepe: `phonepe://pay?pa=${merchantVPA}&pn=KisanMitra&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
+        paytm: `paytmmp://pay?pa=${merchantVPA}&pn=KisanMitra&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
+        bhim: `bhim://pay?pa=${merchantVPA}&pn=KisanMitra&tn=${txnNote}&am=${amount}&cu=INR&tr=${txnId}`,
         amazonpay: baseUpiUrl
       };
       

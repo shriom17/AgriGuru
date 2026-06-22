@@ -1,6 +1,6 @@
-# AgriGuru Frontend
+# KisanMitra Frontend
 
-AgriGuru is a modern, multilingual web platform for Indian farmers, providing AI-powered expert advice, crop analytics, weather forecasts, marketplace, contract farming, and more.
+KisanMitra is a modern, multilingual web platform for Indian farmers, providing AI-powered expert advice, crop analytics, weather forecasts, marketplace, contract farming, and more.
 
 ## Features
 
@@ -24,8 +24,8 @@ AgriGuru is a modern, multilingual web platform for Indian farmers, providing AI
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/AgriGuru.git
-   cd AgriGuru/frontend
+  git clone https://github.com/yourusername/KisanMitra.git
+  cd KisanMitra/frontend
    ```
 
 2. Install dependencies:

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Quick Setup Script for Kaggle Integration
 Simple steps to get started with real agricultural data
@@ -10,26 +10,26 @@ from pathlib import Path
 
 def check_kaggle_setup():
     """Check if Kaggle API is properly configured"""
-    print("🔍 Checking Kaggle API setup...")
+    print("ðŸ” Checking Kaggle API setup...")
     
     try:
         import kaggle
-        print("✅ Kaggle package is installed")
+        print("âœ… Kaggle package is installed")
         
         # Try to access Kaggle API
         kaggle.api.authenticate()
-        print("✅ Kaggle API credentials are working!")
+        print("âœ… Kaggle API credentials are working!")
         return True
         
     except ImportError:
-        print("❌ Kaggle package not installed")
+        print("âŒ Kaggle package not installed")
         print("   Run: pip install kaggle")
         return False
         
     except OSError as e:
         if "credentials" in str(e).lower():
-            print("❌ Kaggle API credentials not found")
-            print("\n🔧 Quick Setup:")
+            print("âŒ Kaggle API credentials not found")
+            print("\nðŸ”§ Quick Setup:")
             print("1. Go to: https://www.kaggle.com/settings/account")
             print("2. Scroll to 'API' section")
             print("3. Click 'Create New API Token'")
@@ -49,7 +49,7 @@ def check_kaggle_setup():
                 
             return False
         else:
-            print(f"❌ Kaggle API error: {e}")
+            print(f"âŒ Kaggle API error: {e}")
             return False
 
 def download_sample_dataset():
@@ -57,7 +57,7 @@ def download_sample_dataset():
     try:
         import kaggle
         
-        print("\n📥 Downloading sample dataset for testing...")
+        print("\nðŸ“¥ Downloading sample dataset for testing...")
         
         # Use a small, reliable dataset for testing
         test_dataset = "abhinand05/crop-production-in-india"
@@ -75,21 +75,21 @@ def download_sample_dataset():
             unzip=True
         )
         
-        print("✅ Sample dataset downloaded successfully!")
+        print("âœ… Sample dataset downloaded successfully!")
         
         # List downloaded files
         files = list(data_dir.glob('*'))
-        print(f"📁 Downloaded files: {[f.name for f in files]}")
+        print(f"ðŸ“ Downloaded files: {[f.name for f in files]}")
         
         return True
         
     except Exception as e:
-        print(f"❌ Download failed: {e}")
+        print(f"âŒ Download failed: {e}")
         return False
 
 def create_sample_data():
     """Create sample data file if Kaggle download fails"""
-    print("\n📝 Creating sample agricultural data...")
+    print("\nðŸ“ Creating sample agricultural data...")
     
     sample_data = {
         "dataset_info": {
@@ -120,35 +120,35 @@ def create_sample_data():
     with open(data_dir / "sample_crop_data.json", 'w') as f:
         json.dump(sample_data, f, indent=2)
     
-    print("✅ Sample data created in data/sample_crop_data.json")
+    print("âœ… Sample data created in data/sample_crop_data.json")
     return True
 
 def main():
     """Main setup function"""
-    print("🌾 AgriGuru Kaggle Integration Setup")
+    print("ðŸŒ¾ KisanMitra Kaggle Integration Setup")
     print("=" * 40)
     
     # Check if Kaggle is set up
     if check_kaggle_setup():
-        print("\n🚀 Kaggle API is ready!")
+        print("\nðŸš€ Kaggle API is ready!")
         
         # Try to download sample data
         if download_sample_dataset():
-            print("\n✅ Setup complete! Real Kaggle data is available.")
+            print("\nâœ… Setup complete! Real Kaggle data is available.")
         else:
-            print("\n⚠️  Download failed, creating sample data...")
+            print("\nâš ï¸  Download failed, creating sample data...")
             create_sample_data()
     else:
-        print("\n⚠️  Kaggle API not configured, using sample data...")
+        print("\nâš ï¸  Kaggle API not configured, using sample data...")
         create_sample_data()
     
     print("\n" + "=" * 40)
-    print("🎯 Next Steps:")
+    print("ðŸŽ¯ Next Steps:")
     print("1. If using real data: Complete Kaggle API setup above")
     print("2. Run: python download_kaggle_data.py")
     print("3. Start your React app: npm start")
     print("4. Test yield prediction in dashboard")
-    print("\n📚 Documentation: YIELD_PREDICTION_KAGGLE_INTEGRATION.md")
+    print("\nðŸ“š Documentation: YIELD_PREDICTION_KAGGLE_INTEGRATION.md")
 
 if __name__ == "__main__":
     main()

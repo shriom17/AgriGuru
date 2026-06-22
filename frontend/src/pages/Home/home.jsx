@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -151,7 +151,7 @@ const Home = () => {
                     }}
                     tabIndex={0}
                     role="button"
-                    aria-label="Navigate to AgriGuru Marketplace"
+                    aria-label="Navigate to KisanMitra Marketplace"
                   >
                     <div className="feature-icon">🛒</div>
                     <h4 className="feature-title">{t('ecommerce.title')}</h4>

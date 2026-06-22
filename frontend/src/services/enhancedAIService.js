@@ -1,4 +1,4 @@
-// Enhanced AI Service for AgriGuru Farming Expert
+﻿// Enhanced AI Service for KisanMitra Farming Expert
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
 
 // Debug logging for development only
@@ -493,7 +493,7 @@ class EnhancedAIService {
         `• Optimal temperature: 20-35°C\n` +
         `• Soil pH: 5.5-7.0\n` +
         `• Harvest in 90-120 days\n\n` +
-        `**Note:** For detailed, personalized advice, please start the AgriGuru backend server.`;
+        `**Note:** For detailed, personalized advice, please start the KisanMitra backend server.`;
     }
     
     if (queryLower.includes('wheat') || crop === 'wheat') {
@@ -504,7 +504,7 @@ class EnhancedAIService {
         `• Optimal temperature: 15-25°C\n` +
         `• Soil pH: 6.0-7.5\n` +
         `• Harvest in 100-130 days\n\n` +
-        `**Note:** For detailed, personalized advice, please start the AgriGuru backend server.`;
+        `**Note:** For detailed, personalized advice, please start the KisanMitra backend server.`;
     }
     
     if (queryLower.includes('cotton') || crop === 'cotton') {
@@ -515,7 +515,7 @@ class EnhancedAIService {
         `• Optimal temperature: 21-35°C\n` +
         `• Soil pH: 5.8-8.0\n` +
         `• Harvest in 160-180 days\n\n` +
-        `**Note:** For detailed, personalized advice, please start the AgriGuru backend server.`;
+        `**Note:** For detailed, personalized advice, please start the KisanMitra backend server.`;
     }
     
     if (queryLower.includes('fertilizer') || queryLower.includes('nutrient')) {
@@ -526,7 +526,7 @@ class EnhancedAIService {
         `• **Potassium (K):** For disease resistance\n` +
         `• Apply based on soil test results\n` +
         `• Use organic alternatives when possible\n\n` +
-        `**Note:** For crop-specific fertilizer schedules, please start the AgriGuru backend server.`;
+        `**Note:** For crop-specific fertilizer schedules, please start the KisanMitra backend server.`;
     }
     
     if (queryLower.includes('pest') || queryLower.includes('disease')) {
@@ -537,7 +537,7 @@ class EnhancedAIService {
         `• Practice crop rotation\n` +
         `• Biological control methods\n` +
         `• Targeted chemical control if needed\n\n` +
-        `**Note:** For specific pest identification and treatment, please start the AgriGuru backend server.`;
+        `**Note:** For specific pest identification and treatment, please start the KisanMitra backend server.`;
     }
     
     if (queryLower.includes('season') || queryLower.includes('calendar')) {
@@ -547,11 +547,11 @@ class EnhancedAIService {
         `• **Rabi Season (November-April):** Wheat, barley, mustard\n` +
         `• **Summer Season (March-June):** Fodder crops, vegetables\n` +
         `• Plan according to monsoon patterns\n\n` +
-        `**Note:** For detailed seasonal activities, please start the AgriGuru backend server.`;
+        `**Note:** For detailed seasonal activities, please start the KisanMitra backend server.`;
     }
     
     // Default fallback
-    return `🌾 **AgriGuru Farming Assistant** (Offline Mode)\n\n` +
+    return `🌾 **KisanMitra Farming Assistant** (Offline Mode)\n\n` +
       `I'm currently unable to connect to the enhanced AI backend, but I can provide basic farming guidance.\n\n` +
       `**To get full expert advice:**\n` +
       `1. Go to the backend folder\n` +

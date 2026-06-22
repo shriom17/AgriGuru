@@ -1,6 +1,6 @@
-# Production Deployment - Images & Videos Fix
+﻿# Production Deployment - Images & Videos Fix
 
-## Issues Fixed ✅
+## Issues Fixed âœ…
 
 ### 1. Logo Not Showing in Deployed Version (CRITICAL)
 **Problem**: Logo file was 1.15MB - too large for web, causing slow/failed loads in production.
@@ -10,7 +10,7 @@
 - [agrifarm.jsx](frontend/src/pages/agrifarm/agrifarm.jsx) - Updated contract preview logo
 - [index.html](frontend/public/index.html) - Updated social media meta tags to use `/logo512.png`
 
-**Result**: 95% smaller file size = 25x faster loading! ⚡
+**Result**: 95% smaller file size = 25x faster loading! âš¡
 
 ### 2. Product Images Not Showing in Deployed Version
 **Problem**: Images were using `process.env.PUBLIC_URL` which doesn't work correctly in production builds.
@@ -87,7 +87,7 @@ After redeploying, verify:
 
 ## Files Modified
 
-1. `frontend/src/components/Navbar/Navbar.jsx` - Fixed logo path (logo.png → logo192.png)
+1. `frontend/src/components/Navbar/Navbar.jsx` - Fixed logo path (logo.png â†’ logo192.png)
 2. `frontend/src/pages/agrifarm/agrifarm.jsx` - Fixed contract preview logo
 3. `frontend/public/index.html` - Updated social media meta tags
 4. `frontend/src/pages/shopping/CustomerMarketplace.jsx` - Fixed image paths
@@ -102,10 +102,11 @@ Make sure these are set in your Vercel/hosting dashboard:
 
 ```env
 REACT_APP_API_BASE_URL=https://kisanmitra-ai.onrender.com/api
-REACT_APP_API_URL=https://agriguru-0as8.onrender.com
-REACT_APP_BACKEND_URL=https://agriguru-0as8.onrender.com
-REACT_APP_SOCKET_URL=https://agriguru-0as8.onrender.com
+REACT_APP_API_URL=https://KisanMitra-0as8.onrender.com
+REACT_APP_BACKEND_URL=https://KisanMitra-0as8.onrender.com
+REACT_APP_SOCKET_URL=https://KisanMitra-0as8.onrender.com
 REACT_APP_GOOGLE_CLIENT_ID=335322175056-3cm72f5j56srr12r3nm0s5mhpntdtvf7.apps.googleusercontent.com
 ```
 
 These are already in your `.env.production` file and should be synced with your deployment platform.
+

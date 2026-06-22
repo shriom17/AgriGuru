@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 import os
 from dotenv import load_dotenv
 import logging
@@ -26,7 +26,7 @@ def send_whatsapp_alert(phone_number, message, template_name=None):
     account_sid = os.getenv('TWILIO_ACCOUNT_SID')
     auth_token = os.getenv('TWILIO_AUTH_TOKEN')
     twilio_number = os.getenv('TWILIO_WHATSAPP_NUMBER')
-    bot_name = os.getenv('WHATSAPP_BOT_NAME', 'AgriGuru')
+    bot_name = os.getenv('WHATSAPP_BOT_NAME', 'KisanMitra')
     
     if not account_sid or not auth_token or not twilio_number:
         logger.error("Twilio credentials not found in environment variables")
@@ -96,9 +96,9 @@ def send_crop_disease_alert(phone_number, crop, disease, action):
 
 def send_test_message(phone_number):
     """Send a test message to verify WhatsApp functionality"""
-    message = """🌾 *AgriGuru Test Message* 🌾
+    message = """🌾 *KisanMitra Test Message* 🌾
 
-Hello! This is a test message from your AgriGuru farming assistant.
+Hello! This is a test message from your KisanMitra farming assistant.
 
 If you're receiving this message, your WhatsApp alerts are working perfectly! 
 
@@ -118,11 +118,11 @@ def setup_business_profile():
     # For now, we'll use this as a placeholder for future business API integration
     
     profile_info = {
-        "business_name": "AgriGuru - Smart Farming Assistant",
+        "business_name": "KisanMitra - Smart Farming Assistant",
         "description": "Your intelligent farming companion for weather alerts, market prices, and agricultural advice.",
         "category": "Agriculture",
-        "website": "https://agriguru.com",
-        "email": "support@agriguru.com"
+        "website": "https://KisanMitra.com",
+        "email": "support@KisanMitra.com"
     }
     
     logger.info("Business profile information prepared for future WhatsApp Business API integration")
@@ -183,11 +183,11 @@ def send_branded_message(phone_number, title, content, alert_type="INFO"):
     emoji = emoji_map.get(alert_type.upper(), "📢")
     
     # Format the branded message
-    message = f"{emoji} *AgriGuru Alert* {emoji}\n\n"
+    message = f"{emoji} *KisanMitra Alert* {emoji}\n\n"
     message += f"*{title}*\n\n"
     message += f"{content}\n\n"
     message += "---\n"
-    message += "🌾 AgriGuru - Your Smart Farming Assistant\n"
+    message += "🌾 KisanMitra - Your Smart Farming Assistant\n"
     message += "For more farming tips and alerts, stay connected!"
     
     return send_whatsapp_alert(phone_number, message)

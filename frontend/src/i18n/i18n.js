@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+﻿import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // Import translation files
@@ -49,7 +49,7 @@ const resources = {
 
 // Detect browser language or use saved preference
 const getBrowserLanguage = () => {
-  const savedLang = localStorage.getItem('agriguru_language');
+  const savedLang = localStorage.getItem('KisanMitra_language');
   if (savedLang) return savedLang;
   
   const browserLang = navigator.language || navigator.languages[0];
@@ -129,7 +129,7 @@ i18n
 
 // Language change handler
 i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('agriguru_language', lng);
+  localStorage.setItem('KisanMitra_language', lng);
   document.documentElement.lang = lng;
   
   // Set RTL for specific languages if needed

@@ -1,4 +1,4 @@
-"""
+﻿"""
 Model Inspector - Analyze the trained disease detection model
 """
 import os
@@ -13,7 +13,7 @@ def inspect_model():
     model_path = './models/quick_crop_disease_model.h5'
     training_info_path = './models/quick_training_info.json'
     
-    print("🔍 AgriGuru Model Inspector")
+    print("🔍 KisanMitra Model Inspector")
     print("=" * 50)
     
     # Check if files exist

@@ -1,8 +1,8 @@
-"""
+﻿"""
 Updated Multi-Crop Service with Real Model Integration
 ====================================================
 
-This service integrates the trained CNN model with the existing AgriGuru system.
+This service integrates the trained CNN model with the existing KisanMitra system.
 """
 
 import os

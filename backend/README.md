@@ -1,6 +1,6 @@
-# AgriGuru AI Backend
+# KisanMitra AI Backend
 
-AgriGuru AI Backend is a clean, production-ready Flask server that powers expert farming advice, crop analytics, weather-based recommendations, market insights, and more for Indian agriculture.
+KisanMitra AI Backend is a clean, production-ready Flask server that powers expert farming advice, crop analytics, weather-based recommendations, market insights, and more for Indian agriculture.
 
 ---
 
@@ -142,7 +142,7 @@ Farmers and users receive:
 - Professional formatting and structure
 - Multiple response types for the same query
 
-AgriGuru AI is now a true **farming expert** for Indian agriculture! 🌾🚜
+KisanMitra AI is now a true **farming expert** for Indian agriculture! 🌾🚜
 
 ---
 

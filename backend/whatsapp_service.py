@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 import os
 from dotenv import load_dotenv
 import logging
@@ -40,7 +40,7 @@ def send_whatsapp_alert(phone_number, message):
         "to": phone_number,
         "type": "template",
         "template": {
-            "name": "agriguru_alert",
+            "name": "KisanMitra_alert",
             "language": {
                 "code": "en_US"
             },

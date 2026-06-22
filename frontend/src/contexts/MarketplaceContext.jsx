@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+﻿import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 // Action types for the marketplace reducer
 const ACTIONS = {
@@ -135,8 +135,8 @@ export const MarketplaceProvider = ({ children }) => {
   // Load data from localStorage on mount
   useEffect(() => {
     try {
-      const savedCart = localStorage.getItem('agriguru_cart');
-      const savedFavorites = localStorage.getItem('agriguru_favorites');
+      const savedCart = localStorage.getItem('KisanMitra_cart');
+      const savedFavorites = localStorage.getItem('KisanMitra_favorites');
       
       dispatch({
         type: ACTIONS.LOAD_DATA,
@@ -153,7 +153,7 @@ export const MarketplaceProvider = ({ children }) => {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     try {
-      localStorage.setItem('agriguru_cart', JSON.stringify(state.cart));
+      localStorage.setItem('KisanMitra_cart', JSON.stringify(state.cart));
     } catch (error) {
       console.error('Error saving cart to localStorage:', error);
     }
@@ -162,7 +162,7 @@ export const MarketplaceProvider = ({ children }) => {
   // Save favorites to localStorage whenever they change
   useEffect(() => {
     try {
-      localStorage.setItem('agriguru_favorites', JSON.stringify(state.favorites));
+      localStorage.setItem('KisanMitra_favorites', JSON.stringify(state.favorites));
     } catch (error) {
       console.error('Error saving favorites to localStorage:', error);
     }

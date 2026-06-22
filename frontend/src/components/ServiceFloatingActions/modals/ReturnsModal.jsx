@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import './ModalStyles.css';
 
 const ReturnsModal = ({ onClose, cart }) => {
@@ -238,7 +238,7 @@ const ReturnsModal = ({ onClose, cart }) => {
                       checked={returnData.refundMethod === 'wallet'}
                       onChange={(e) => setReturnData({...returnData, refundMethod: e.target.value})}
                     />
-                    <span>👛 AgriGuru Wallet</span>
+                    <span>👛 KisanMitra Wallet</span>
                   </label>
                 </div>
               </div>
